@@ -53,6 +53,28 @@ The bridge:
 The wire format is a design proposal, not a tested protocol. F0 must validate
 it.
 
+### Evidence from the shipped application
+
+`Contents/Lua/celua.txt` documents `LuaServerSocket` and
+`createServerSocket(port, localhostOnly)`: a blocking TCP socket whose
+`acceptConnection` blocks the calling thread. The same document recommends
+using a separate thread. `LuaPipe`, the base class, exposes `readBytes`,
+`writeBytes`, `Timeout`, `OnTimeout` and `OnError`. This is enough to implement
+length-prefixed JSON without adding a native transport.
+
+The application also ships C source fragments for a named-pipe Lua client
+(`Contents/MacOS/include/luaclient.c` and `cepipelib.c`). They are not used by
+this design: a C client would add a native build step and a second protocol.
+
+Two platform facts affect F0:
+
+- `liblua53.dylib` declares macOS 13.3 even though the main executable declares
+  10.15. The bridge should report the effective host floor rather than assuming
+  10.15.
+- `libspeedhack.dylib` contains only `i386` and `x86_64` slices. The Lua
+  `SpeedhackV3Mac.lua` path uses `compile` and API hooks, so arm64 speedhack may
+  still work, but that is unverified.
+
 ### Coverage
 
 The bridge can cover most of the documented API:

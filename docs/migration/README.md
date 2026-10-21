@@ -19,6 +19,7 @@ such.
 | 2026-10-21 | Narrowed the scope from a full clone to an MCP server |
 | 2026-10-21 | Chose a Lua bridge as the first backend |
 | 2026-10-21 | Defined profiles, stateless handles and the tool catalog |
+| 2026-10-21 | Ran a formal REA CLI/Mach-O, plist and signature pass |
 | 2026-10-21 | Published a documentation-only public preview |
 | TBD | F0: bridge and MCP spike |
 | TBD | Implementation license selected before code contributions |

@@ -76,11 +76,26 @@ The `lua` profile will generate one tool per documented function. Generated
 tools are **designed**, not implemented. The `all` profile is the union of the
 curated catalog and the generated tools.
 
+### Bundled Lua code outside the count
+
+Cheat Engine ships Lua code that is not part of `celua.txt`:
+
+- `Contents/Lua/Autorun/`: speedhack, Mono/.NET, Java, pseudocode and symbol
+  scripts loaded at startup;
+- `Contents/Lua/Extensions/AITools/`: an MIT-licensed AI assistant extension;
+- `Contents/Lua/Extensions/UETools/`: MIT-licensed Unreal Engine inspection
+  tools.
+
+These scripts are not in the 585-function count, are not generated as tools and
+are not exposed by default. They are shipped application assets, not copied into
+this repository. Adopting one later would require an explicit tool contract and
+a license review.
+
 ## Platform coverage
 
 | Platform | Curated design | Bridge | Native gaps |
 | --- | --- | --- | --- |
-| macOS arm64 | Yes | Planned; first target | Pointer scan, arm64 debugger context, interactive structure dissect |
+| macOS arm64 | Yes | Planned; first target | Pointer scan, arm64 debugger context, interactive structure dissect, arm64 speedhack path unverified |
 | macOS x86_64 | Yes | Planned | Same, plus x86-specific debugger behavior |
 | Windows | Yes | Future | DBVM/kernel features excluded |
 | Linux | Yes | Future | Bridge needs validation |

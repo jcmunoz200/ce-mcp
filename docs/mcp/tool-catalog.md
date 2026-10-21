@@ -151,6 +151,10 @@ profile. It is not counted in the 81.
 | `hotkey_set` | Register or update a hotkey |
 | `speedhack_set` | Enable, disable and configure speedhack |
 
+`speedhack_set` is mapped through `speedhack_setSpeed`, but the macOS arm64
+Lua `compile` hook path is unverified; the bundled `libspeedhack.dylib` has no
+arm64 slice.
+
 ## Misc (3)
 
 | Tool | Summary |

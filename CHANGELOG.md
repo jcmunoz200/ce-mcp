@@ -22,6 +22,9 @@ The project does not have a released version yet.
 - mdBook documentation site and documentation CI.
 - Published the public documentation site at
   <https://jcmunoz200.github.io/ce-mcp/>.
+- Formal REA 6.7.0 artifact, Mach-O, plist and code-signature evidence for the
+  shipped Cheat Engine 7.7 bundle, including the macOS version-floor and
+  `libspeedhack` architecture findings.
 
 ### Changed
 

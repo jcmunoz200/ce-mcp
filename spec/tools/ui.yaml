@@ -47,3 +47,4 @@ tools:
     ce_lua: "speedhack_setSpeed(speed) / speedhack_getSpeed()"
     risk: ui
     status: mapped
+    notes: "macOS arm64 uses the Lua compile hook path; the bundled libspeedhack.dylib is x86_64/i386 only and arm64 behavior is unverified."

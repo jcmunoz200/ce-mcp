@@ -13,6 +13,7 @@ license is chosen.
 - [x] Research the MCP `2026-07-28` specification.
 - [x] Decide MCP-first scope and Lua-bridge backend.
 - [x] Define the tool catalog and profiles.
+- [x] Run a formal REA CLI/Mach-O, plist and signature pass.
 - [x] Publish the documentation site.
 - [x] Review every claim and link with markdownlint, lychee and mdBook.
 - [ ] Close the open design questions in the migration journal; these are

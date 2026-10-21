@@ -5,6 +5,9 @@
 **No license is granted.** This repository is a public design preview, not an
 open-source project.
 
+On 2026-10-21 the owner reviewed the implementation-license options and chose
+to remain unlicensed for now. This is a deliberate gate, not an oversight.
+
 | Item | Status |
 | --- | --- |
 | Implementation | Does not exist yet |

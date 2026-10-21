@@ -156,7 +156,9 @@ The macOS native interface is value `4` in
 | `getLuaEngine()` | Lua engine form |
 
 The bridge depends on `createServerSocket`, `acceptConnection`, `createThread`
-and `synchronize`.
+and `synchronize`. `acceptConnection` blocks its calling thread; the bridge must
+run it in a Lua thread. `LuaPipe` provides `readBytes`, `writeBytes`, `Timeout`,
+`OnTimeout` and `OnError` for the framed JSON payload.
 
 ## Platform notes
 
