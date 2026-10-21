@@ -28,7 +28,8 @@ Exit criteria:
 
 ## F0 — Bridge and MCP spike
 
-Status: planned.
+Status: planned; blocked by the license decision. The acceptance criteria are in
+the [F0 test plan](docs/migration/09-f0-test-plan.md).
 
 - Implement `bridge/ce_bridge.lua` with localhost-only TCP, token auth and
   length-prefixed JSON.

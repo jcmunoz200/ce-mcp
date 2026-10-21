@@ -34,6 +34,10 @@ The project does not have a released version yet.
   `mapped` after verifying `debugProcess`, `detachIfPossible` and
   `debug_continueFromBreakpoint` in `celua.txt`. The curated coverage is now
   70 mapped and 11 gaps.
+- Added formal dispositions and closure criteria for the 11 remaining gaps,
+  including the pointer scanner, stack traces, form opening and snapshot
+  restore.
+- Added an acceptance test plan for the six-tool F0 bridge and MCP spike.
 
 ### Fixed
 

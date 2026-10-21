@@ -17,6 +17,8 @@
 - [Backend strategy](migration/05-backend-strategy.md)
 - [Tool migration](migration/06-tool-migration.md)
 - [Open-source readiness](migration/07-open-source.md)
+- [Gap deferrals](migration/08-gap-deferrals.md)
+- [F0 bridge and MCP test plan](migration/09-f0-test-plan.md)
 - [Journal: 2026-10-21](migration/journal/2026-10-21.md)
 
 # MCP design

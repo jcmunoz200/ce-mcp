@@ -54,6 +54,10 @@ reliable mapping yet. Gaps are documented, not hidden.
 | `snapshot_restore` | Restoring memory and table state needs a conflict and safety model |
 | `trainer_generate` | Windows/PE-centric; out of scope for macOS |
 
+The disposition and closure criterion for each gap is recorded in
+[Gap deferrals](../migration/08-gap-deferrals.md). A gap is not an
+implementation promise.
+
 ## Lua API
 
 | Family | Functions | Status on macOS | Notes |

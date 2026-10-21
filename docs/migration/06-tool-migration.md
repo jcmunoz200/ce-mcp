@@ -115,6 +115,10 @@ The `platforms` field in each tool definition is authoritative.
 | Trainer generation | Windows/PE-centric | Out of scope for macOS; revisit later |
 | DBVM and kernel features | Windows-only by design | Excluded |
 
+The 11 tool-level gaps and their closure criteria are recorded in
+[Gap deferrals](08-gap-deferrals.md). This table also includes limitations that
+are not individual tools.
+
 ## Coverage in CI
 
 When implementation starts, CI will:

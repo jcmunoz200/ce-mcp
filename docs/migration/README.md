@@ -20,6 +20,8 @@ such.
 | 2026-10-21 | Chose a Lua bridge as the first backend |
 | 2026-10-21 | Defined profiles, stateless handles and the tool catalog |
 | 2026-10-21 | Ran a formal REA CLI/Mach-O, plist and signature pass |
+| 2026-10-21 | Mapped three debugger controls and formally deferred the remaining 11 gaps |
+| 2026-10-21 | Defined the F0 bridge and MCP acceptance test plan |
 | 2026-10-21 | Published a documentation-only public preview |
 | TBD | F0: bridge and MCP spike |
 | TBD | Implementation license selected before code contributions |
@@ -35,6 +37,8 @@ such.
 | [05-backend-strategy.md](05-backend-strategy.md) | Why a Lua bridge first, and how does a native backend fit? |
 | [06-tool-migration.md](06-tool-migration.md) | How do Cheat Engine capabilities become MCP tools? |
 | [07-open-source.md](07-open-source.md) | What does the project need before it is open source? |
+| [08-gap-deferrals.md](08-gap-deferrals.md) | Why are the remaining 11 tools gaps, and what would close them? |
+| [09-f0-test-plan.md](09-f0-test-plan.md) | How will the six-tool F0 spike be accepted? |
 | [journal/2026-10-21.md](journal/2026-10-21.md) | What happened in the first design session? |
 
 ## Evidence labels
@@ -46,9 +50,10 @@ Every technical claim in this section should be read with one of these labels:
 - **Inference** — a conclusion drawn from observations; may be wrong.
 - **Unknown** — not established by the available evidence.
 
-The initial inventory is based on shell tools (`file`, `nm`, `strings`,
-`otool`, `codesign`), not on a formal REA analysis. This is called out in
-[01-target-inventory.md](01-target-inventory.md).
+The initial inventory began with shell tools (`file`, `nm`, `strings`, `otool`,
+`codesign`). A later formal REA 6.7.0 CLI/Mach-O, plist and signature pass
+strengthened the metadata evidence. Neither pass establishes runtime behavior;
+that boundary is recorded in [01-target-inventory.md](01-target-inventory.md).
 
 ## Scope of the migration
 

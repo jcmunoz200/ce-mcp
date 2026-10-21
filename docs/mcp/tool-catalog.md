@@ -207,4 +207,5 @@ from [the Lua API reference](../reference/ce-lua-api.md).
 - A GUI clone.
 
 See [Tool migration](../migration/06-tool-migration.md) for the mapping method
-and known gaps.
+and [Gap deferrals](../migration/08-gap-deferrals.md) for the remaining 11
+tool-level gaps and their closure criteria.
