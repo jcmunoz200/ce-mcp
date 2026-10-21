@@ -46,7 +46,10 @@ The design contains **81 tools** in 13 groups.
 | Misc | 3 | `trainer_generate`, `snapshot_create`, `snapshot_restore` |
 
 The machine-readable definitions are in [`spec/tools/`](../../spec/tools/). The
-catalog reference is [MCP tool catalog](../mcp/tool-catalog.md).
+catalog reference is [MCP tool catalog](../mcp/tool-catalog.md). The six F0
+tools have concrete JSON Schema contracts in
+[`spec/contracts/f0.yaml`](../../spec/contracts/f0.yaml); the other 75 still
+need their input and output schemas.
 
 ## Lua API coverage
 

@@ -10,6 +10,11 @@ machine-readable source of truth is [`spec/tools/`](../../spec/tools/).
 The server also exposes `tool_search` as a built-in discovery tool in every
 profile. It is not counted in the 81.
 
+The six tools in the F0 spike have machine-readable input and output schemas in
+[`spec/contracts/f0.yaml`](../../spec/contracts/f0.yaml), explained in
+[F0 tool contracts](f0-contracts.md). The other tools are catalogued but do not
+have contracts yet.
+
 ## Meta (4)
 
 | Tool | Summary |

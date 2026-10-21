@@ -26,6 +26,7 @@
 - [Protocol](mcp/protocol.md)
 - [Transports](mcp/transports.md)
 - [Tool catalog](mcp/tool-catalog.md)
+- [F0 tool contracts](mcp/f0-contracts.md)
 - [Profiles](mcp/profiles.md)
 - [Errors](mcp/errors.md)
 - [Security](mcp/security.md)

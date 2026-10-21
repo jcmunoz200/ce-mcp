@@ -40,10 +40,10 @@ The design goal is complete capability coverage:
 
 | Profile | Contents | Intended use |
 | --- | --- | --- |
-| `core` | Process, memory, scan, table and Lua tools (~30) | Default agent workflow |
-| `full` | Adds symbols, pointer scan, debugger, assembler and structures (~80) | Power users |
-| `lua` | One generated tool per documented Lua function (~585) | Full API compatibility |
-| `all` | `full` + `lua` | "Every tool" mode |
+| `core` | 32 process, memory, scan, table and Lua tools | Default agent workflow |
+| `full` | 81 curated tools, including symbols, pointer scan, debugger, assembler and structures | Power users |
+| `lua` | 4 meta tools + 585 generated tools (589) | Full API compatibility |
+| `all` | 81 curated + 585 generated (666) | "Every tool" mode |
 
 Planned workflows include:
 
@@ -60,6 +60,8 @@ Planned workflows include:
 
 None of the above is implemented yet. The catalog is specified in
 [`spec/`](spec/) and described in [docs/mcp/tool-catalog.md](docs/mcp/tool-catalog.md).
+The six F0 tools have JSON Schema input and output contracts in
+[`spec/contracts/f0.yaml`](spec/contracts/f0.yaml).
 Some planned tools are explicit gaps—most notably pointer scan, stack traces,
 UI form automation and trainer generation. See
 [Coverage](docs/reference/coverage.md).

@@ -118,8 +118,11 @@ A tool call includes the tool name and arguments. The result is either:
 - a task creation result if the tasks extension is active and the operation is
   long-running.
 
-Every tool has an `inputSchema` and an `outputSchema`. Output schemas are
-important: they let clients validate results and generate better summaries.
+Every tool is required to have an `inputSchema` and an `outputSchema` in its
+final contract. Output schemas are important: they let clients validate results
+and generate better summaries. The six F0 tools have concrete schemas in
+[`spec/contracts/f0.yaml`](../../spec/contracts/f0.yaml); the other 75 still need
+them. The conventions are in [F0 tool contracts](f0-contracts.md).
 
 ### Naming
 

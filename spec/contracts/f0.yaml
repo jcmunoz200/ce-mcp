@@ -1,0 +1,490 @@
+version: 1
+protocol: "2026-07-28"
+scope: "F0"
+description: "MCP contracts for the six tools in the F0 bridge and server spike."
+conventions:
+  json_schema: "JSON Schema 2020-12"
+  addresses: "Lowercase hexadecimal strings with a 0x prefix, for example 0x100000000."
+  handles: "Opaque strings. Never parse a handle as an address or a PID."
+  numbers: "PIDs, sizes and counts are JSON integers. Addresses, memory values and bytes are strings."
+  bytes: "memory_read returns lowercase hex without separators, or standard base64."
+  pagination: "next_cursor is opaque and tied to the query. Omit it for the first page."
+  errors: "A tool error is isError: true with structuredContent matching docs/mcp/errors.md."
+  output: "structuredContent matches outputSchema. content is a human-readable fallback."
+tools:
+  - name: ce_info
+    description: "Return server, Cheat Engine, Lua, bridge and host information."
+    annotations:
+      readOnlyHint: true
+      destructiveHint: false
+      idempotentHint: true
+      openWorldHint: false
+    inputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties: {}
+      additionalProperties: false
+    outputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        server:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+            protocol:
+              type: string
+            profile:
+              type: string
+              enum: [core, full, lua, all]
+          required: [name, version, protocol, profile]
+          additionalProperties: false
+        cheat_engine:
+          type: object
+          properties:
+            version:
+              type: string
+            pid:
+              type: integer
+              minimum: 1
+            architecture:
+              type: string
+              enum: [x86_64, arm64, i386, unknown]
+          required: [version, pid, architecture]
+          additionalProperties: false
+        bridge:
+          type: object
+          properties:
+            version:
+              type: string
+            transport:
+              type: string
+              enum: [localhost-tcp]
+            connected:
+              type: boolean
+          required: [version, transport, connected]
+          additionalProperties: false
+        lua:
+          type: object
+          properties:
+            version:
+              type: string
+          required: [version]
+          additionalProperties: false
+        os:
+          type: object
+          properties:
+            name:
+              type: string
+            version:
+              type: string
+            architecture:
+              type: string
+              enum: [x86_64, arm64, i386, unknown]
+          required: [name, version, architecture]
+          additionalProperties: false
+        profiles:
+          type: array
+          items:
+            type: string
+            enum: [core, full, lua, all]
+          uniqueItems: true
+      required: [server, cheat_engine, bridge, lua, os, profiles]
+      additionalProperties: false
+    errors:
+      - CE_BACKEND_UNAVAILABLE
+      - CE_ACCESS_DENIED
+      - CE_INTERNAL
+    examples:
+      - input: {}
+        output:
+          server:
+            name: ce-mcp
+            version: 0.1.0
+            protocol: "2026-07-28"
+            profile: core
+          cheat_engine:
+            version: "7.7"
+            pid: 1201
+            architecture: arm64
+          bridge:
+            version: 0.1.0
+            transport: localhost-tcp
+            connected: true
+          lua:
+            version: "5.3"
+          os:
+            name: macOS
+            version: "26.0"
+            architecture: arm64
+          profiles: [core, full, lua, all]
+
+  - name: process_list
+    description: "List processes by PID and name, with optional filtering and pagination."
+    annotations:
+      readOnlyHint: true
+      destructiveHint: false
+      idempotentHint: true
+      openWorldHint: false
+    inputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        filter:
+          type: string
+          maxLength: 256
+          description: "Case-insensitive substring match on the process name. Omit to list all processes."
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+        cursor:
+          type: string
+          minLength: 1
+      additionalProperties: false
+    outputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        processes:
+          type: array
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              pid:
+                type: integer
+                minimum: 1
+              name:
+                type: string
+              architecture:
+                type: string
+                enum: [x86_64, arm64, i386, unknown]
+            required: [pid, name, architecture]
+            additionalProperties: false
+        next_cursor:
+          type: ["string", "null"]
+      required: [processes, next_cursor]
+      additionalProperties: false
+    errors:
+      - CE_BACKEND_UNAVAILABLE
+      - CE_ACCESS_DENIED
+      - CE_INVALID_CURSOR
+      - CE_INTERNAL
+    examples:
+      - input:
+          filter: target
+          limit: 2
+        output:
+          processes:
+            - pid: 4321
+              name: ce-mcp-target
+              architecture: arm64
+            - pid: 4322
+              name: ce-mcp-target-helper
+              architecture: x86_64
+          next_cursor: null
+
+  - name: process_open
+    description: "Open a process by PID or exact name and return an opaque process handle."
+    annotations:
+      readOnlyHint: false
+      destructiveHint: false
+      idempotentHint: false
+      openWorldHint: false
+    inputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        pid:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+          description: "Exact, case-sensitive process name."
+      oneOf:
+        - required: [pid]
+        - required: [name]
+      additionalProperties: false
+    outputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        process_handle:
+          type: string
+          minLength: 1
+        pid:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        architecture:
+          type: string
+          enum: [x86_64, arm64, i386, unknown]
+      required: [process_handle, pid, name, architecture]
+      additionalProperties: false
+    errors:
+      - CE_PROCESS_NOT_FOUND
+      - CE_ACCESS_DENIED
+      - CE_BACKEND_UNAVAILABLE
+      - CE_INVALID_ARGUMENT
+      - CE_INTERNAL
+    examples:
+      - input:
+          pid: 4321
+        output:
+          process_handle: ph_01J8Z3K4Q8
+          pid: 4321
+          name: ce-mcp-target
+          architecture: arm64
+
+  - name: memory_read
+    description: "Read a byte range from the open process."
+    annotations:
+      readOnlyHint: true
+      destructiveHint: false
+      idempotentHint: true
+      openWorldHint: false
+    inputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        process_handle:
+          type: string
+          minLength: 1
+        address:
+          type: string
+          pattern: "^0x[0-9a-fA-F]+$"
+        size:
+          type: integer
+          minimum: 1
+          maximum: 1048576
+        encoding:
+          type: string
+          enum: [hex, base64]
+          default: hex
+      required: [process_handle, address, size]
+      additionalProperties: false
+    outputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        address:
+          type: string
+          pattern: "^0x[0-9a-fA-F]+$"
+        size:
+          type: integer
+          minimum: 1
+          maximum: 1048576
+        encoding:
+          type: string
+          enum: [hex, base64]
+        data:
+          type: string
+      required: [address, size, encoding, data]
+      additionalProperties: false
+    errors:
+      - CE_INVALID_ARGUMENT
+      - CE_HANDLE_EXPIRED
+      - CE_INVALID_ADDRESS
+      - CE_PROCESS_CLOSED
+      - CE_LIMIT_EXCEEDED
+      - CE_TIMEOUT
+      - CE_INTERNAL
+    examples:
+      - input:
+          process_handle: ph_01J8Z3K4Q8
+          address: "0x100000000"
+          size: 16
+          encoding: hex
+        output:
+          address: "0x100000000"
+          size: 16
+          encoding: hex
+          data: "2a000000000000000000000000000000"
+
+  - name: scan_start
+    description: "Start a first value scan and return an opaque scan handle."
+    annotations:
+      readOnlyHint: false
+      destructiveHint: false
+      idempotentHint: false
+      openWorldHint: false
+    inputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        process_handle:
+          type: string
+          minLength: 1
+        value_type:
+          type: string
+          enum: [byte, int16, int32, int64, float, double, string]
+        comparison:
+          type: string
+          enum: [exact, unknown]
+        value:
+          type: string
+          minLength: 1
+          description: "Decimal for numeric types; raw text for string scans. Required when comparison is exact."
+        alignment:
+          type: integer
+          enum: [1, 2, 4, 8]
+          default: 1
+        start_address:
+          type: string
+          pattern: "^0x[0-9a-fA-F]+$"
+        stop_address:
+          type: string
+          pattern: "^0x[0-9a-fA-F]+$"
+        string_encoding:
+          type: string
+          enum: [utf8, utf16]
+          default: utf8
+        case_sensitive:
+          type: boolean
+          default: true
+        max_results:
+          type: integer
+          minimum: 1
+          maximum: 1000000
+          default: 1000000
+      required: [process_handle, value_type, comparison]
+      oneOf:
+        - properties:
+            comparison:
+              const: exact
+          required: [value]
+        - properties:
+            comparison:
+              const: unknown
+          required: [comparison]
+          not:
+            required: [value]
+      additionalProperties: false
+    outputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        scan_handle:
+          type: string
+          minLength: 1
+        state:
+          type: string
+          enum: [running, completed, cancelled, failed]
+        result_count:
+          type: ["integer", "null"]
+        task_id:
+          type: string
+          minLength: 1
+      required: [scan_handle, state, result_count]
+      additionalProperties: false
+    errors:
+      - CE_INVALID_ARGUMENT
+      - CE_HANDLE_EXPIRED
+      - CE_PROCESS_CLOSED
+      - CE_BACKEND_BUSY
+      - CE_LIMIT_EXCEEDED
+      - CE_TIMEOUT
+      - CE_INTERNAL
+    examples:
+      - input:
+          process_handle: ph_01J8Z3K4Q8
+          value_type: int32
+          comparison: exact
+          value: "42"
+          alignment: 4
+        output:
+          scan_handle: sh_01J8Z4M2P7
+          state: completed
+          result_count: 3
+
+  - name: scan_results
+    description: "Return a paginated page of current scan results."
+    annotations:
+      readOnlyHint: true
+      destructiveHint: false
+      idempotentHint: true
+      openWorldHint: false
+    inputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        scan_handle:
+          type: string
+          minLength: 1
+        cursor:
+          type: string
+          minLength: 1
+        limit:
+          type: integer
+          minimum: 1
+          maximum: 1000
+          default: 100
+        include_values:
+          type: boolean
+          default: true
+      required: [scan_handle]
+      additionalProperties: false
+    outputSchema:
+      $schema: "https://json-schema.org/draft/2020-12/schema"
+      type: object
+      properties:
+        scan_handle:
+          type: string
+          minLength: 1
+        state:
+          type: string
+          enum: [running, completed, cancelled, failed]
+        value_type:
+          type: string
+          enum: [byte, int16, int32, int64, float, double, string]
+        results:
+          type: array
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              address:
+                type: string
+                pattern: "^0x[0-9a-fA-F]+$"
+              value:
+                type: ["string", "null"]
+              previous_value:
+                type: ["string", "null"]
+            required: [address, value]
+            additionalProperties: false
+        next_cursor:
+          type: ["string", "null"]
+        total:
+          type: ["integer", "null"]
+      required: [scan_handle, state, value_type, results, next_cursor, total]
+      additionalProperties: false
+    errors:
+      - CE_SCAN_NOT_FOUND
+      - CE_SCAN_BUSY
+      - CE_INVALID_CURSOR
+      - CE_HANDLE_EXPIRED
+      - CE_TIMEOUT
+      - CE_INTERNAL
+    examples:
+      - input:
+          scan_handle: sh_01J8Z4M2P7
+          limit: 2
+        output:
+          scan_handle: sh_01J8Z4M2P7
+          state: completed
+          value_type: int32
+          results:
+            - address: "0x100000000"
+              value: "42"
+            - address: "0x100000100"
+              value: "42"
+          next_cursor: c1
+          total: 3

@@ -38,6 +38,8 @@ The project does not have a released version yet.
   including the pointer scanner, stack traces, form opening and snapshot
   restore.
 - Added an acceptance test plan for the six-tool F0 bridge and MCP spike.
+- Added JSON Schema 2020-12 input and output contracts for the six F0 tools,
+  including handle, address, pagination and error conventions.
 
 ### Fixed
 

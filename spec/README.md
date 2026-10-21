@@ -22,6 +22,7 @@ is data, not executable code.
 | `tools/ui.yaml` | UI, hotkey and speedhack tools |
 | `tools/misc.yaml` | Trainer and snapshot tools |
 | `lua-api.yaml` | Documented Lua function names and migration status |
+| `contracts/f0.yaml` | Input and output schemas for the six F0 tools |
 
 ## Tool schema
 
@@ -63,6 +64,14 @@ is data, not executable code.
 A tool can be `mapped` and still be a design. `mapped` does not mean
 implemented. The coverage report counts implemented and tested separately.
 
+## F0 contracts
+
+`contracts/f0.yaml` is the source of truth for the six F0 tool schemas. It uses
+JSON Schema 2020-12 and mirrors the MCP `tools/list` fields: `name`,
+`description`, `inputSchema`, `outputSchema` and annotations. The conventions,
+limits and test obligations are explained in
+[F0 tool contracts](../docs/mcp/f0-contracts.md).
+
 ## Counts
 
 - Curated tools: 81.
@@ -81,6 +90,8 @@ The future generator will validate:
 - every `core` tool is also in `full`;
 - the counts match `profiles.yaml`;
 - every `gap` has a note;
+- every F0 tool has an input and output schema that parses as JSON Schema
+  2020-12 and matches a tool name in `spec/tools/`;
 - every `ce_lua` mapping is a known function or explicitly composed;
 - no Cheat Engine assets or copied descriptions are present.
 

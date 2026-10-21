@@ -16,6 +16,11 @@ F0 exposes six tools:
 - `scan_start`
 - `scan_results`
 
+Their input and output schemas are in
+[`spec/contracts/f0.yaml`](../../spec/contracts/f0.yaml), with the conventions
+explained in [F0 tool contracts](../mcp/f0-contracts.md). The tests below must
+validate results against those schemas.
+
 Nothing on this page is implemented or tested.
 
 ## Preconditions
@@ -157,6 +162,8 @@ For every run, record:
 F0 is complete only when:
 
 - all six tools satisfy the table above on macOS arm64;
+- every successful result validates against its schema in
+  `spec/contracts/f0.yaml`;
 - the modern and legacy stdio version paths behave as documented;
 - the bridge survives malformed input, reconnects and restart;
 - the localhost-only and token checks pass;

@@ -22,6 +22,7 @@ such.
 | 2026-10-21 | Ran a formal REA CLI/Mach-O, plist and signature pass |
 | 2026-10-21 | Mapped three debugger controls and formally deferred the remaining 11 gaps |
 | 2026-10-21 | Defined the F0 bridge and MCP acceptance test plan |
+| 2026-10-21 | Defined JSON Schema contracts for the six F0 tools |
 | 2026-10-21 | Published a documentation-only public preview |
 | TBD | F0: bridge and MCP spike |
 | TBD | Implementation license selected before code contributions |
