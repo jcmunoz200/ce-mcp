@@ -30,6 +30,10 @@ The project does not have a released version yet.
 
 - Scoped the project from a full Cheat Engine clone to an MCP server with a
   pluggable backend.
+- Reclassified `debug_attach`, `debug_detach` and `debug_step` from `gap` to
+  `mapped` after verifying `debugProcess`, `detachIfPossible` and
+  `debug_continueFromBreakpoint` in `celua.txt`. The curated coverage is now
+  70 mapped and 11 gaps.
 
 ### Fixed
 

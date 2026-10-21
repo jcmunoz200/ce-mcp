@@ -60,8 +60,9 @@ Planned workflows include:
 
 None of the above is implemented yet. The catalog is specified in
 [`spec/`](spec/) and described in [docs/mcp/tool-catalog.md](docs/mcp/tool-catalog.md).
-Some planned tools are explicit gaps—most notably pointer scan and parts of the
-arm64 debugger. See [Coverage](docs/reference/coverage.md).
+Some planned tools are explicit gaps—most notably pointer scan, stack traces,
+UI form automation and trainer generation. See
+[Coverage](docs/reference/coverage.md).
 
 ## Architecture
 

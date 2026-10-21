@@ -6,21 +6,21 @@ tools:
     summary: "Attach the debugger to the open process and return a debug_handle."
     profiles: [full]
     platforms: [macos, windows, linux]
-    backend: native
-    ce_lua: null
+    backend: lua
+    ce_lua: "debugProcess(0)"
     risk: debug
-    status: gap
-    notes: "No documented attach call; macOS native debugger behavior and arm64 support are unverified."
+    status: mapped
+    notes: "Starts the debugger for the open process; macOS native interface is value 4. arm64 behavior is unverified."
 
   - name: debug_detach
     summary: "Detach the debugger and release breakpoints."
     profiles: [full]
     platforms: [macos, windows, linux]
-    backend: native
-    ce_lua: null
+    backend: lua
+    ce_lua: "detachIfPossible()"
     risk: debug
-    status: gap
-    notes: "No documented detach call; release breakpoints and state explicitly when a native backend exists."
+    status: mapped
+    notes: "Detaches when attached; breakpoint cleanup and arm64 behavior must be verified."
 
   - name: debug_status
     summary: "Return debugger state, current thread and stop reason."
@@ -71,11 +71,11 @@ tools:
     summary: "Step into, over or out of the current instruction."
     profiles: [full]
     platforms: [macos, windows, linux]
-    backend: native
-    ce_lua: null
+    backend: lua
+    ce_lua: "debug_continueFromBreakpoint(co_stepinto/co_stepover)"
     risk: debug
-    status: gap
-    notes: "Stepping depends on arm64 context support; verify before mapping to debug_continueFromBreakpoint."
+    status: mapped
+    notes: "Step into and over are documented; step out needs a composed return breakpoint. arm64 context is unverified."
 
   - name: registers_get
     summary: "Read registers for the current thread."

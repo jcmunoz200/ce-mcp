@@ -28,17 +28,17 @@ This page must never report design as coverage.
 | Table | 10 | 10 | 0 | 0 | 0 |
 | Pointer scan | 6 | 0 | 6 | 0 | 0 |
 | Disassembly/assembly | 4 | 4 | 0 | 0 | 0 |
-| Debugger | 12 | 8 | 4 | 0 | 0 |
+| Debugger | 12 | 11 | 1 | 0 | 0 |
 | Structures | 4 | 4 | 0 | 0 | 0 |
 | Lua | 3 | 3 | 0 | 0 | 0 |
 | UI/application | 5 | 4 | 1 | 0 | 0 |
 | Misc | 3 | 1 | 2 | 0 | 0 |
-| **Total** | **81** | **67** | **14** | **0** | **0** |
+| **Total** | **81** | **70** | **11** | **0** | **0** |
 
 A "mapped" tool has an identified Lua or native strategy. A "gap" has no
 reliable mapping yet. Gaps are documented, not hidden.
 
-### The 14 gaps
+### The 11 gaps
 
 | Tool | Why it is a gap |
 | --- | --- |
@@ -49,9 +49,6 @@ reliable mapping yet. Gaps are documented, not hidden.
 | `pointer_scan_rescan` | Depends on pointer scan |
 | `pointer_scan_cancel` | Depends on pointer scan |
 | `pointermap_generate` | No direct Lua API; pointer-map callbacks exist, but orchestration is form-driven |
-| `debug_attach` | No documented attach call; macOS arm64 behavior is unverified |
-| `debug_detach` | No documented detach call |
-| `debug_step` | Depends on arm64 context support |
 | `stacktrace` | Depends on the debugger backend and symbolication |
 | `ui_open_tool` | Form automation is possible but fragile; not designed yet |
 | `snapshot_restore` | Restoring memory and table state needs a conflict and safety model |

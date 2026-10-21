@@ -3,8 +3,8 @@
 This is the human-readable catalog of the **81 curated tools**. The
 machine-readable source of truth is [`spec/tools/`](../../spec/tools/).
 
-> **Status:** every tool is designed; 67 have an identified backend mapping
-> (`mapped`) and 14 have no reliable mapping yet (`gap`). None is implemented.
+> **Status:** every tool is designed; 70 have an identified backend mapping
+> (`mapped`) and 11 have no reliable mapping yet (`gap`). None is implemented.
 > See [Coverage](../reference/coverage.md).
 
 The server also exposes `tool_search` as a built-in discovery tool in every

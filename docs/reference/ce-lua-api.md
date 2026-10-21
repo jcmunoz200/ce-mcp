@@ -120,6 +120,8 @@ script activation.
 
 | Function | Purpose |
 | --- | --- |
+| `debugProcess(interface)` | Start the debugger for the open process (attach) |
+| `detachIfPossible()` | Detach the debugger |
 | `debug_isDebugging()` | Debugger active |
 | `debug_getCurrentDebuggerInterface()` | Windows, VEH, kernel, macOS native, gdb |
 | `debug_setBreakpoint(address, ...)` | Set a breakpoint |
