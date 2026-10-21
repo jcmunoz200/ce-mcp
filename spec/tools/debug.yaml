@@ -1,0 +1,118 @@
+group: debug
+description: "Debugger attachment, breakpoints, stepping, registers and stack."
+
+tools:
+  - name: debug_attach
+    summary: "Attach the debugger to the open process and return a debug_handle."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: debug
+    status: gap
+    notes: "No documented attach call; macOS native debugger behavior and arm64 support are unverified."
+
+  - name: debug_detach
+    summary: "Detach the debugger and release breakpoints."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: debug
+    status: gap
+    notes: "No documented detach call; release breakpoints and state explicitly when a native backend exists."
+
+  - name: debug_status
+    summary: "Return debugger state, current thread and stop reason."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_isDebugging() / debug_isBroken() / debug_isStepping()"
+    risk: debug
+    status: mapped
+
+  - name: breakpoint_set
+    summary: "Set a software, hardware or memory breakpoint."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_setBreakpoint(address, size, trigger, method)"
+    risk: debug
+    status: mapped
+
+  - name: breakpoint_remove
+    summary: "Remove a breakpoint by address or ID."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_removeBreakpoint(address) / debug_removeBreakpointByID(id)"
+    risk: debug
+    status: mapped
+
+  - name: breakpoint_list
+    summary: "List breakpoints and hit counts."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_getBreakpointList()"
+    risk: debug
+    status: mapped
+
+  - name: debug_continue
+    summary: "Continue execution from a breakpoint."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_continueFromBreakpoint(co_run)"
+    risk: debug
+    status: mapped
+
+  - name: debug_step
+    summary: "Step into, over or out of the current instruction."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: debug
+    status: gap
+    notes: "Stepping depends on arm64 context support; verify before mapping to debug_continueFromBreakpoint."
+
+  - name: registers_get
+    summary: "Read registers for the current thread."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_getContext(extraregs) / debug_getCurrentContextTable(extraregs)"
+    risk: debug
+    status: mapped
+    notes: "arm64 field coverage must be verified."
+
+  - name: registers_set
+    summary: "Write registers for the current thread."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_setContext(extraregs)"
+    risk: debug
+    status: mapped
+    notes: "arm64 field coverage must be verified."
+
+  - name: stacktrace
+    summary: "Return a stack trace with module offsets."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: debug
+    status: gap
+    notes: "No direct documented stack-trace API; symbolication also varies by platform."
+
+  - name: debug_wait
+    summary: "Wait for a breakpoint or debug event with a timeout."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "debug_isBroken() polling + breakpoint callbacks"
+    risk: debug
+    status: mapped
+    notes: "Long waits should use a task rather than hold a request open."

@@ -1,0 +1,40 @@
+group: assembly
+description: "Disassembly, assembly, Auto Assembler and code caves."
+
+tools:
+  - name: disassemble
+    summary: "Disassemble instructions at an address."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "disassemble(address) / splitDisassembledString(...)"
+    risk: read
+    status: mapped
+
+  - name: assemble
+    summary: "Assemble one or more instructions at an address."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "assemble(line, address, assemblePreference, skipRangeCheck)"
+    risk: execute
+    status: mapped
+
+  - name: auto_assemble
+    summary: "Run an Auto Assembler script."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "autoAssemble(text) / autoAssembleCheck(text)"
+    risk: execute
+    status: mapped
+
+  - name: code_cave_find
+    summary: "Find code caves in modules and memory regions."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "enumMemoryRegions() + readBytes()"
+    risk: read
+    status: mapped
+    notes: "Composed scan for runs of 0x00 or 0xCC; no single documented API."

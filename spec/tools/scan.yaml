@@ -1,0 +1,77 @@
+group: scan
+description: "First scan, refinement, results and scan persistence."
+
+tools:
+  - name: scan_start
+    summary: "Start a first scan and return a scan_handle, with a task ID for long scans."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "createMemScan() + memscan:firstScan(...)"
+    risk: read
+    status: mapped
+
+  - name: scan_next
+    summary: "Refine an existing scan with exact, changed, unchanged, increased or decreased filters."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "memscan:nextScan(...)"
+    risk: read
+    status: mapped
+
+  - name: scan_cancel
+    summary: "Cancel a running scan or scan task."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "memscan + bridge cancellation flag"
+    risk: read
+    status: mapped
+    notes: "Cancellation is cooperative; the bridge checks the flag between regions."
+
+  - name: scan_status
+    summary: "Return scan progress, result count and state."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "memscan:waitTillDone(timeout) + memscan result count"
+    risk: read
+    status: mapped
+
+  - name: scan_results
+    summary: "Return a paginated page of addresses and current values."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "memscan:getResults(...)"
+    risk: read
+    status: mapped
+
+  - name: scan_refresh
+    summary: "Refresh the values of the current scan results."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "memscan:getResults(...) + read per address"
+    risk: read
+    status: mapped
+
+  - name: scan_save
+    summary: "Persist a scan session to the server workspace."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: read
+    status: mapped
+    notes: "Server-side JSON, not a native Cheat Engine scan format."
+
+  - name: scan_load
+    summary: "Restore a scan session from the server workspace."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: read
+    status: mapped

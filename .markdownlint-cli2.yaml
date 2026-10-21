@@ -1,0 +1,16 @@
+config:
+  default: true
+  MD013: false
+  MD033: false
+  MD024:
+    siblings_only: true
+  MD041: true
+  MD046:
+    style: fenced
+
+globs:
+  - "**/*.md"
+
+ignores:
+  - "docs/book/**"
+  - "node_modules/**"

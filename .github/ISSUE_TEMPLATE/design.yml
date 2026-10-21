@@ -1,0 +1,65 @@
+name: Design proposal
+description: Propose a change to the MCP contract, architecture, tool catalog or migration plan.
+title: "design: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping design `ce-mcp`. Please read `CONTRIBUTING.md` first.
+
+        This repository is a documentation-only public preview. Code pull
+        requests are paused until the implementation license is chosen.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is missing, wrong or unclear?
+      placeholder: Describe the problem, not only the solution.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What should change, and which documents or tools are affected?
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: What else did you consider, and why is it worse?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - MCP protocol or transports
+        - Tool catalog or profiles
+        - Backend or bridge
+        - Cheat Engine semantics
+        - Security
+        - Documentation
+        - Licensing or governance
+        - Other
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues and ADRs.
+          required: true
+        - label: This proposal does not include Cheat Engine binaries or copied documentation.
+          required: true
+        - label: This proposal does not involve anti-cheat bypass or unauthorized access.
+          required: true
+        - label: I understand that code contributions are paused.
+          required: true

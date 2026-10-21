@@ -1,0 +1,16 @@
+ce-mcp
+Unofficial MCP server for Cheat Engine — design preview
+
+This project is not affiliated with, endorsed by, sponsored by or otherwise
+connected to Cheat Engine or its authors.
+
+"Cheat Engine" is a trademark of its respective owner. The name is used only to
+describe interoperability with the application. No Cheat Engine logo or other
+trademark asset is included in this repository.
+
+This repository does not contain Cheat Engine binaries, source code, language
+files, tutorials, icons, screenshots or other Cheat Engine assets. Users must
+install Cheat Engine themselves from its official distribution.
+
+Third-party projects referenced by the design are listed in
+docs/legal/third-party.md.

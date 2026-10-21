@@ -1,0 +1,36 @@
+version: 1
+default: core
+
+profiles:
+  core:
+    description: "Default process, memory, scan, AOB/symbol, table and Lua workflow."
+    curated: 32
+    generated_lua: 0
+    total: 32
+  full:
+    description: "All curated tools, including debugger, assembler, structures and pointer scan."
+    curated: 81
+    generated_lua: 0
+    total: 81
+  lua:
+    description: "Meta tools plus one generated tool per documented Cheat Engine Lua function."
+    curated: 4
+    generated_lua: 585
+    total: 589
+  all:
+    description: "All curated tools plus all generated Lua tools."
+    curated: 81
+    generated_lua: 585
+    total: 666
+
+builtin_tools:
+  - name: tool_search
+    description: "Search the full tool catalog, including tools outside the active profile."
+    profiles: [core, full, lua, all]
+    counted: false
+
+generated_lua:
+  prefix: "lua_"
+  source: "lua-api.yaml"
+  count: 585
+  profiles: [lua, all]

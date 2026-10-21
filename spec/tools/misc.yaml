@@ -1,0 +1,33 @@
+group: misc
+description: "Trainer generation and server-side snapshots."
+
+tools:
+  - name: trainer_generate
+    summary: "Generate a trainer from a table."
+    profiles: [full]
+    platforms: [windows]
+    backend: native
+    ce_lua: null
+    risk: execute
+    status: gap
+    notes: "Windows/PE-centric and out of scope for the first macOS release."
+
+  - name: snapshot_create
+    summary: "Capture a server-side snapshot of a table and selected memory regions."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: mixed
+    ce_lua: "saveTable(stream) + readBytes()"
+    risk: read
+    status: mapped
+    notes: "The snapshot format and storage policy are not designed yet."
+
+  - name: snapshot_restore
+    summary: "Restore a server-side snapshot."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: write
+    status: gap
+    notes: "Restoring memory and table state needs a conflict and safety model."

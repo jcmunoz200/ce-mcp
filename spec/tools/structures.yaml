@@ -1,0 +1,39 @@
+group: structures
+description: "Structure definitions and reads."
+
+tools:
+  - name: structure_new
+    summary: "Create a structure definition."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "createStructure(name)"
+    risk: write
+    status: mapped
+
+  - name: structure_define
+    summary: "Add fields with offsets, types and names."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "structure:addElement() + StructureElement properties"
+    risk: write
+    status: mapped
+
+  - name: structure_read
+    summary: "Read a structure at an address."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "StructureElement:getValue(address)"
+    risk: read
+    status: mapped
+
+  - name: structure_list
+    summary: "List structure definitions in the current table."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getStructureCount() / getStructure(index)"
+    risk: read
+    status: mapped

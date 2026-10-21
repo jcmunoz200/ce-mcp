@@ -1,0 +1,68 @@
+group: process
+description: "Process selection, modules, memory regions and threads."
+
+tools:
+  - name: process_list
+    summary: "List processes by PID and name, with an optional filter."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getProcesslist()"
+    risk: read
+    status: mapped
+
+  - name: process_open
+    summary: "Open a process by PID or name and return a process_handle."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "openProcess(pid) / openProcess(name)"
+    risk: read
+    status: mapped
+    notes: "Opening a process is the consent boundary for later writes."
+
+  - name: process_close
+    summary: "Close a process handle and release its resources."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: mixed
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "celua.txt has no closeProcess; openProcess(0) behavior is unverified."
+
+  - name: process_info
+    summary: "Return PID, name, path, architecture, start time and handle state."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getOpenedProcessID() / getOpenedProcessHandle() / getProcessIDFromProcessName(name)"
+    risk: read
+    status: mapped
+
+  - name: module_list
+    summary: "List loaded modules with base, size and path."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "enumModules()"
+    risk: read
+    status: mapped
+
+  - name: region_list
+    summary: "List memory regions with protection, state and type."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "enumMemoryRegions()"
+    risk: read
+    status: mapped
+
+  - name: thread_list
+    summary: "List thread IDs for the open process."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getThreadlist()"
+    risk: read
+    status: mapped

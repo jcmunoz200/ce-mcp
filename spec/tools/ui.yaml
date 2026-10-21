@@ -1,0 +1,49 @@
+group: ui
+description: "Main-window state, tools, hotkeys and speedhack."
+
+tools:
+  - name: ui_state
+    summary: "Return main-window state and open tools."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getMainForm() properties"
+    risk: ui
+    status: mapped
+
+  - name: ui_open_tool
+    summary: "Open a named Cheat Engine tool or form."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: ui
+    status: gap
+    notes: "Form automation is possible but fragile; no stable generic API."
+
+  - name: hotkey_list
+    summary: "List registered hotkeys."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord.Hotkey[] + getHotkeyHandlerThread()"
+    risk: read
+    status: mapped
+
+  - name: hotkey_set
+    summary: "Register or update a hotkey."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord:createHotkey({keys}, action, value, description)"
+    risk: ui
+    status: mapped
+
+  - name: speedhack_set
+    summary: "Enable, disable and configure speedhack."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "speedhack_setSpeed(speed) / speedhack_getSpeed()"
+    risk: ui
+    status: mapped

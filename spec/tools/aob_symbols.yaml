@@ -1,0 +1,48 @@
+group: aob_symbols
+description: "Array-of-bytes scans, symbols and address expressions."
+
+tools:
+  - name: aob_scan
+    summary: "Scan for an array of bytes with optional wildcards."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "AOBScan(aobstring, protectionflags, alignmenttype, alignmentparam)"
+    risk: read
+    status: mapped
+
+  - name: symbol_resolve
+    summary: "Resolve a symbol or Cheat Engine address expression to an address."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getAddress(string)"
+    risk: read
+    status: mapped
+
+  - name: symbol_lookup
+    summary: "Map an address to a module offset or registered symbol."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getNameFromAddress(address)"
+    risk: read
+    status: mapped
+
+  - name: symbol_list
+    summary: "List registered and user-defined symbols."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getMainSymbolList():getSymbolList()"
+    risk: read
+    status: mapped
+
+  - name: address_parse
+    summary: "Parse module+offset, pointer and symbol expressions."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getAddress(string)"
+    risk: read
+    status: mapped

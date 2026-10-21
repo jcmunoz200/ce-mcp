@@ -1,0 +1,32 @@
+group: lua
+description: "Lua evaluation and API introspection."
+
+tools:
+  - name: lua_eval
+    summary: "Evaluate Lua in Cheat Engine and return a JSON-safe value."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "loadstring / pcall in the bridge"
+    risk: execute
+    status: mapped
+    notes: "Arbitrary code execution by design. No sandbox."
+
+  - name: lua_call
+    summary: "Call a documented Lua function by name with typed arguments."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "_G[name](args...)"
+    risk: execute
+    status: mapped
+
+  - name: lua_api_list
+    summary: "List documented Lua functions and their migration status."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: meta
+    status: mapped
+    notes: "Generated from spec/lua-api.yaml."

@@ -1,0 +1,95 @@
+group: memory
+description: "Typed and raw memory access, allocation and protection."
+
+tools:
+  - name: memory_read
+    summary: "Read a byte range and return hex or base64 data."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "readBytes(address, bytecount, true)"
+    risk: read
+    status: mapped
+
+  - name: memory_write
+    summary: "Write a byte range to the target process."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "writeBytes(address, table)"
+    risk: write
+    status: mapped
+
+  - name: memory_read_value
+    summary: "Read a typed scalar: byte, integer, qword, float, double or pointer."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "readByte / readInteger / readQword / readFloat / readDouble / readPointer"
+    risk: read
+    status: mapped
+
+  - name: memory_write_value
+    summary: "Write a typed scalar at an address."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "writeByte / writeInteger / writeQword / writeFloat / writeDouble / writePointer"
+    risk: write
+    status: mapped
+
+  - name: memory_read_string
+    summary: "Read an ASCII, UTF-8 or UTF-16 string."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "readString(address, maxlength, widechar)"
+    risk: read
+    status: mapped
+
+  - name: memory_alloc
+    summary: "Allocate memory in the target process and return its address."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "allocateMemory(size, protection)"
+    risk: write
+    status: mapped
+
+  - name: memory_free
+    summary: "Free a previous allocation in the target process."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "deAlloc(address)"
+    risk: write
+    status: mapped
+
+  - name: memory_protect
+    summary: "Change page protection for a memory range."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "setMemoryProtection(address, size, rights)"
+    risk: write
+    status: mapped
+
+  - name: memory_fill
+    summary: "Fill a range with a repeated byte pattern."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "writeBytes(address, repeated pattern)"
+    risk: write
+    status: mapped
+    notes: "Composed in the bridge; no single fillMemory function is documented."
+
+  - name: memory_dump
+    summary: "Dump a memory range to a file or return it in chunks."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "readBytes(address, bytecount, true)"
+    risk: read
+    status: mapped
+    notes: "Paginated or written to the server workspace; verify size limits."

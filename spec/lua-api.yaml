@@ -1,0 +1,1808 @@
+# Cheat Engine 7.7 Lua API names
+#
+# Extracted from the shipped Cheat Engine 7.7 macOS bundle:
+#   /Applications/CheatEngine77.app/Contents/Lua/celua.txt
+#
+# This file records function NAMES and migration status only. It intentionally
+# does not reproduce Cheat Engine's documentation text. See the official
+# document for signatures and behavior:
+#   https://github.com/cheat-engine/cheat-engine/blob/master/Cheat%20Engine/bin/celua.txt
+#
+# Generated on 2026-10-21. Do not edit the function list by hand; regenerate it
+# from a trusted Cheat Engine 7.7 installation and review the diff.
+#
+# Note: an initial regex counted 586 names. Review found that
+# `ModuleLoader(Inheritance: -)` is a class heading, not a function, so the
+# corrected count is 585. The 613 signatures include overloads.
+#
+# Status values:
+#   unmapped              - not mapped to a curated or generated tool yet
+#   curated               - covered by a curated MCP tool (mapping pending)
+#   generated             - planned as a generated tool under the `lua` profile
+#   excluded              - intentionally not exposed
+#   unsupported-on-macos  - Windows/DBVM/kernel-only
+
+version: "7.7"
+source: "Cheat Engine 7.7 macOS bundle, Contents/Lua/celua.txt"
+extracted: "2026-10-21"
+unique_functions: 585
+signatures: 613
+
+functions:
+  - name: activateProtection
+    status: unmapped
+    platform: unknown
+  - name: addCIncludePath
+    status: unmapped
+    platform: unknown
+  - name: addColumn
+    status: unmapped
+    platform: unknown
+  - name: addColumns
+    status: unmapped
+    platform: unknown
+  - name: addGroup
+    status: unmapped
+    platform: unknown
+  - name: addSnapshotAsComment
+    status: unmapped
+    platform: unknown
+  - name: allocateKernelMemory
+    status: unmapped
+    platform: unknown
+  - name: allocateMemory
+    status: unmapped
+    platform: unknown
+  - name: allocateSharedMemory
+    status: unmapped
+    platform: unknown
+  - name: allocateSharedMemoryLocal
+    status: unmapped
+    platform: unknown
+  - name: ansiToUTF8
+    status: unmapped
+    platform: unknown
+  - name: AOBScan
+    status: unmapped
+    platform: unknown
+  - name: AOBScanModuleUnique
+    status: unmapped
+    platform: unknown
+  - name: AOBScanUnique
+    status: unmapped
+    platform: unknown
+  - name: assemble
+    status: unmapped
+    platform: unknown
+  - name: autoAssemble
+    status: unmapped
+    platform: unknown
+  - name: autoAssembleCheck
+    status: unmapped
+    platform: unknown
+  - name: autoGuess
+    status: unmapped
+    platform: unknown
+  - name: bAnd
+    status: unmapped
+    platform: unknown
+  - name: beep
+    status: unmapped
+    platform: unknown
+  - name: bNot
+    status: unmapped
+    platform: unknown
+  - name: bOr
+    status: unmapped
+    platform: unknown
+  - name: bShl
+    status: unmapped
+    platform: unknown
+  - name: bShr
+    status: unmapped
+    platform: unknown
+  - name: bXor
+    status: unmapped
+    platform: unknown
+  - name: byteTableToDouble
+    status: unmapped
+    platform: unknown
+  - name: byteTableToDword
+    status: unmapped
+    platform: unknown
+  - name: byteTableToExtended
+    status: unmapped
+    platform: unknown
+  - name: byteTableToFloat
+    status: unmapped
+    platform: unknown
+  - name: byteTableToQword
+    status: unmapped
+    platform: unknown
+  - name: byteTableToString
+    status: unmapped
+    platform: unknown
+  - name: byteTableToWideString
+    status: unmapped
+    platform: unknown
+  - name: byteTableToWord
+    status: unmapped
+    platform: unknown
+  - name: cheatEngineIs64Bit
+    status: unmapped
+    platform: unknown
+  - name: checkSynchronize
+    status: unmapped
+    platform: unknown
+  - name: closeCE
+    status: unmapped
+    platform: unknown
+  - name: closeRemoteHandle
+    status: unmapped
+    platform: unknown
+  - name: compareMemory
+    status: unmapped
+    platform: unknown
+  - name: compile
+    status: unmapped
+    platform: unknown
+  - name: compileCS
+    status: unmapped
+    platform: unknown
+  - name: compileFiles
+    status: unmapped
+    platform: unknown
+  - name: compileTCCLib
+    status: unmapped
+    platform: unknown
+  - name: connectToCEServer
+    status: unmapped
+    platform: unknown
+  - name: connectToPipe
+    status: unmapped
+    platform: unknown
+  - name: connectToTCPServer
+    status: unmapped
+    platform: unknown
+  - name: convertFromUTF8
+    status: unmapped
+    platform: unknown
+  - name: convertKeyComboToString
+    status: unmapped
+    platform: unknown
+  - name: convertToUTF8
+    status: unmapped
+    platform: unknown
+  - name: copyMemory
+    status: unmapped
+    platform: unknown
+  - name: cpuid
+    status: unmapped
+    platform: unknown
+  - name: createAutoAssemblerForm
+    status: unmapped
+    platform: unknown
+  - name: createBitmap
+    status: unmapped
+    platform: unknown
+  - name: createButton
+    status: unmapped
+    platform: unknown
+  - name: createCalendar
+    status: unmapped
+    platform: unknown
+  - name: createCECustomButton
+    status: unmapped
+    platform: unknown
+  - name: createCheckBox
+    status: unmapped
+    platform: unknown
+  - name: createClass
+    status: unmapped
+    platform: unknown
+  - name: createColorBox
+    status: unmapped
+    platform: unknown
+  - name: createColorDialog
+    status: unmapped
+    platform: unknown
+  - name: createComboBox
+    status: unmapped
+    platform: unknown
+  - name: createComponentClass
+    status: unmapped
+    platform: unknown
+  - name: createCriticalSection
+    status: unmapped
+    platform: unknown
+  - name: createD3DHook
+    status: unmapped
+    platform: unknown
+  - name: createDiagram
+    status: unmapped
+    platform: unknown
+  - name: createDisassembler
+    status: unmapped
+    platform: unknown
+  - name: createEdit
+    status: unmapped
+    platform: unknown
+  - name: createEvent
+    status: unmapped
+    platform: unknown
+  - name: createExecuteCodeExStub
+    status: unmapped
+    platform: unknown
+  - name: createExecuteMethodStub
+    status: unmapped
+    platform: unknown
+  - name: createFileStream
+    status: unmapped
+    platform: unknown
+  - name: createFindDialog
+    status: unmapped
+    platform: unknown
+  - name: createFont
+    status: unmapped
+    platform: unknown
+  - name: createForm
+    status: unmapped
+    platform: unknown
+  - name: createFormFromFile
+    status: unmapped
+    platform: unknown
+  - name: createFormFromStream
+    status: unmapped
+    platform: unknown
+  - name: createFoundList
+    status: unmapped
+    platform: unknown
+  - name: createGroupBox
+    status: unmapped
+    platform: unknown
+  - name: createHotkey
+    status: unmapped
+    platform: unknown
+  - name: createHotkeyEx
+    status: unmapped
+    platform: unknown
+  - name: createIcon
+    status: unmapped
+    platform: unknown
+  - name: createImage
+    status: unmapped
+    platform: unknown
+  - name: createImageList
+    status: unmapped
+    platform: unknown
+  - name: createJpeg
+    status: unmapped
+    platform: unknown
+  - name: createLabel
+    status: unmapped
+    platform: unknown
+  - name: createListBox
+    status: unmapped
+    platform: unknown
+  - name: createListView
+    status: unmapped
+    platform: unknown
+  - name: createLuaEngine
+    status: unmapped
+    platform: unknown
+  - name: createMainMenu
+    status: unmapped
+    platform: unknown
+  - name: createMarkDownViewer
+    status: unmapped
+    platform: unknown
+  - name: createMemo
+    status: unmapped
+    platform: unknown
+  - name: createMemoryStream
+    status: unmapped
+    platform: unknown
+  - name: createMemoryView
+    status: unmapped
+    platform: unknown
+  - name: createMemScan
+    status: unmapped
+    platform: unknown
+  - name: createMenuItem
+    status: unmapped
+    platform: unknown
+  - name: createMultiReadExclusiveWriteSynchronizer
+    status: unmapped
+    platform: unknown
+  - name: createODBCConnection
+    status: unmapped
+    platform: unknown
+  - name: createOpenDialog
+    status: unmapped
+    platform: unknown
+  - name: createPaintBox
+    status: unmapped
+    platform: unknown
+  - name: createPanel
+    status: unmapped
+    platform: unknown
+  - name: createPicture
+    status: unmapped
+    platform: unknown
+  - name: createPipe
+    status: unmapped
+    platform: unknown
+  - name: createPNG
+    status: unmapped
+    platform: unknown
+  - name: createPopupMenu
+    status: unmapped
+    platform: unknown
+  - name: createProcess
+    status: unmapped
+    platform: unknown
+  - name: createProgressBar
+    status: unmapped
+    platform: unknown
+  - name: createRadioGroup
+    status: unmapped
+    platform: unknown
+  - name: createRef
+    status: unmapped
+    platform: unknown
+  - name: createRegion
+    status: unmapped
+    platform: unknown
+  - name: createRemoteExecutor
+    status: unmapped
+    platform: unknown
+  - name: createRemoteThread
+    status: unmapped
+    platform: unknown
+  - name: createRipRelativeScanner
+    status: unmapped
+    platform: unknown
+  - name: createSaveDialog
+    status: unmapped
+    platform: unknown
+  - name: createSection
+    status: unmapped
+    platform: unknown
+  - name: createSelectDirectoryDialog
+    status: unmapped
+    platform: unknown
+  - name: createSemaphore
+    status: unmapped
+    platform: unknown
+  - name: createServerSocket
+    status: unmapped
+    platform: unknown
+  - name: createSettingsOption
+    status: unmapped
+    platform: unknown
+  - name: createSplitter
+    status: unmapped
+    platform: unknown
+  - name: createSQLite3Connection
+    status: unmapped
+    platform: unknown
+  - name: createSQLQuery
+    status: unmapped
+    platform: unknown
+  - name: createSQLTransaction
+    status: unmapped
+    platform: unknown
+  - name: createStringlist
+    status: unmapped
+    platform: unknown
+  - name: createStringStream
+    status: unmapped
+    platform: unknown
+  - name: createStructure
+    status: unmapped
+    platform: unknown
+  - name: createStructureForm
+    status: unmapped
+    platform: unknown
+  - name: createStructureFromName
+    status: unmapped
+    platform: unknown
+  - name: createSynEdit
+    status: unmapped
+    platform: unknown
+  - name: createTableFile
+    status: unmapped
+    platform: unknown
+  - name: createTableOption
+    status: unmapped
+    platform: unknown
+  - name: createThread
+    status: unmapped
+    platform: unknown
+  - name: createThreadNewState
+    status: unmapped
+    platform: unknown
+  - name: createThreadSuspended
+    status: unmapped
+    platform: unknown
+  - name: createTimer
+    status: unmapped
+    platform: unknown
+  - name: createToggleBox
+    status: unmapped
+    platform: unknown
+  - name: createTrackBar
+    status: unmapped
+    platform: unknown
+  - name: createTreeView
+    status: unmapped
+    platform: unknown
+  - name: createVirtualStringTree
+    status: unmapped
+    platform: unknown
+  - name: darkMode
+    status: unmapped
+    platform: unknown
+  - name: dbk_executeKernelMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_getCR0
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_getCR3
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_getCR4
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_getPEProcess
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_getPEThread
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_getPhysicalAddress
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_initialize
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_initialized
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_readMSR
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_readPhysicalMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_setSaferPhysicalMemoryScanning
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_useKernelmodeOpenProcess
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_useKernelmodeProcessMemoryAccess
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_useKernelmodeQueryMemoryRegions
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_usePhysicalMemoryAccess
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_writeMSR
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_writePhysicalMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbk_writesIgnoreWriteProtection
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_addMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_bp_getBrokenThreadEventFull
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_bp_getBrokenThreadEventShort
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_bp_getBrokenThreadListSize
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_bp_getProcessAndThreadIDFromEvent
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_bp_resumeBrokenThread
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_bp_setBrokenThreadEventFull
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_changeregonbp
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_cloak_activate
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_cloak_deactivate
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_cloak_readOriginal
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_cloak_writeOriginal
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_getcpuidlog
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_getCR4
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_getMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_initialize
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_initialized
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_log_cr3_start
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_log_cr3_stop
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_readMSR
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_readPhysicalMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_removechangeregonbp
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_setKeys
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_setTSCAdjust
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_speedhack_setSpeed
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_startcpuidlog
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_stopcpuidlog
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_traceonbp
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_traceonbp_getstatus
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_traceonbp_remove
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_traceonbp_retrievelog
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_traceonbp_stoptrace
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_watch_disable
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_watch_executes
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_watch_reads
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_watch_retrievelog
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_watch_writes
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_writeMSR
+    status: unsupported-on-macos
+    platform: windows
+  - name: dbvm_writePhysicalMemory
+    status: unsupported-on-macos
+    platform: windows
+  - name: deAlloc
+    status: unmapped
+    platform: unknown
+  - name: debug_addThreadToNoBreakList
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_breakThread
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_canBreak
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_continueFromBreakpoint
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getBreakpointList
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getContext
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getCurrentContextTable
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getCurrentDebuggerInterface
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getLastBranchRecord
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getMaxLastBranchRecord
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_getXMMPointer
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_isBroken
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_isDebugging
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_isStepping
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_removeBreakpoint
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_removeBreakpointByID
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_removeThreadFromNoBreakList
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_setBreakpoint
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_setBreakpointForThread
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_setContext
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_setLastBranchRecording
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debug_updateGUI
+    status: unmapped
+    platform: unknown
+    notes: "macOS support varies; verify before mapping"
+  - name: debugProcess
+    status: unmapped
+    platform: unknown
+  - name: decodeFunction
+    status: unmapped
+    platform: unknown
+  - name: deleteAllRegisteredSymbols
+    status: unmapped
+    platform: unknown
+  - name: deleteFile
+    status: unmapped
+    platform: unknown
+  - name: deleteTableOption
+    status: unmapped
+    platform: unknown
+  - name: destroyRef
+    status: unmapped
+    platform: unknown
+  - name: detachIfPossible
+    status: unmapped
+    platform: unknown
+  - name: disableLuaDebug
+    status: unmapped
+    platform: unknown
+  - name: disassemble
+    status: unmapped
+    platform: unknown
+  - name: disassembleBytes
+    status: unmapped
+    platform: unknown
+  - name: doKeyPress
+    status: unmapped
+    platform: unknown
+  - name: dotNetExecuteClassMethod
+    status: unmapped
+    platform: unknown
+  - name: doubleToByteTable
+    status: unmapped
+    platform: unknown
+  - name: duplicateHandle
+    status: unmapped
+    platform: unknown
+  - name: dwordToByteTable
+    status: unmapped
+    platform: unknown
+  - name: enableDRM
+    status: unmapped
+    platform: unknown
+  - name: enableKernelSymbols
+    status: unmapped
+    platform: unknown
+  - name: enableLuaDebug
+    status: unmapped
+    platform: unknown
+  - name: enableWindowsSymbols
+    status: unmapped
+    platform: unknown
+  - name: encodeFunction
+    status: unmapped
+    platform: unknown
+  - name: encodeFunctionCompatibilityMode
+    status: unmapped
+    platform: unknown
+  - name: encodeFunctionEx
+    status: unmapped
+    platform: unknown
+  - name: endsWith
+    status: unmapped
+    platform: unknown
+  - name: enumAllObjects
+    status: unmapped
+    platform: unknown
+  - name: enumAllObjectsOfType
+    status: unmapped
+    platform: unknown
+  - name: enumDomains
+    status: unmapped
+    platform: unknown
+  - name: enumMemoryRegions
+    status: unmapped
+    platform: unknown
+  - name: enumModuleList
+    status: unmapped
+    platform: unknown
+  - name: enumModules
+    status: unmapped
+    platform: unknown
+  - name: enumRegisteredSymbols
+    status: unmapped
+    platform: unknown
+  - name: enumSectionsOfModule
+    status: unmapped
+    platform: unknown
+  - name: enumStructureForms
+    status: unmapped
+    platform: unknown
+  - name: enumTypeDefs
+    status: unmapped
+    platform: unknown
+  - name: errorOnLookupFailure
+    status: unmapped
+    platform: unknown
+  - name: executeCode
+    status: unmapped
+    platform: unknown
+  - name: executeCode_ptrace
+    status: unmapped
+    platform: unknown
+  - name: executeCodeEx
+    status: unmapped
+    platform: unknown
+  - name: executeCodeExThread
+    status: unmapped
+    platform: unknown
+  - name: executeCodeLocal
+    status: unmapped
+    platform: unknown
+  - name: executeCodeLocalEx
+    status: unmapped
+    platform: unknown
+  - name: executeMethod
+    status: unmapped
+    platform: unknown
+  - name: executeMethodThread
+    status: unmapped
+    platform: unknown
+  - name: extendedToByteTable
+    status: unmapped
+    platform: unknown
+  - name: extractFileExt
+    status: unmapped
+    platform: unknown
+  - name: extractFileName
+    status: unmapped
+    platform: unknown
+  - name: extractFileNameWithoutExt
+    status: unmapped
+    platform: unknown
+  - name: extractFilePath
+    status: unmapped
+    platform: unknown
+  - name: fileExists
+    status: unmapped
+    platform: unknown
+  - name: findTableFile
+    status: unmapped
+    platform: unknown
+  - name: findWindow
+    status: unmapped
+    platform: unknown
+  - name: floatToByteTable
+    status: unmapped
+    platform: unknown
+  - name: focus
+    status: unmapped
+    platform: unknown
+  - name: freeKernelMemory
+    status: unmapped
+    platform: unknown
+  - name: fuckCheatEngine
+    status: unmapped
+    platform: unknown
+  - name: fullAccess
+    status: unmapped
+    platform: unknown
+  - name: gc_setActive
+    status: unmapped
+    platform: unknown
+  - name: gc_setPassive
+    status: unmapped
+    platform: unknown
+  - name: generateAOBInjectionScript
+    status: unmapped
+    platform: unknown
+  - name: generateAPIHookScript
+    status: unmapped
+    platform: unknown
+  - name: generateCodeInjectionScript
+    status: unmapped
+    platform: unknown
+  - name: generateFullInjectionScript
+    status: unmapped
+    platform: unknown
+  - name: getABI
+    status: unmapped
+    platform: unknown
+  - name: getAddress
+    status: unmapped
+    platform: unknown
+  - name: getAddressData
+    status: unmapped
+    platform: unknown
+  - name: getAddressList
+    status: unmapped
+    platform: unknown
+  - name: getAddressSafe
+    status: unmapped
+    platform: unknown
+  - name: getApplication
+    status: unmapped
+    platform: unknown
+  - name: getAutoAttachList
+    status: unmapped
+    platform: unknown
+  - name: getAutorunPath
+    status: unmapped
+    platform: unknown
+  - name: getCEPatreonSessionID
+    status: unmapped
+    platform: unknown
+  - name: getCEServerInterface
+    status: unmapped
+    platform: unknown
+  - name: getCEServerPath
+    status: unmapped
+    platform: unknown
+  - name: getCEVersion
+    status: unmapped
+    platform: unknown
+  - name: getCheatEngineDir
+    status: unmapped
+    platform: unknown
+  - name: getCheatEngineFileVersion
+    status: unmapped
+    platform: unknown
+  - name: getCheatEngineProcessID
+    status: unmapped
+    platform: unknown
+  - name: getCodeFilter
+    status: unmapped
+    platform: unknown
+  - name: getComment
+    status: unmapped
+    platform: unknown
+  - name: getCPUCount
+    status: unmapped
+    platform: unknown
+  - name: getCurrentMemscan
+    status: unmapped
+    platform: unknown
+  - name: getCurrentScriptPath
+    status: unmapped
+    platform: unknown
+  - name: getCurrentThreadObject
+    status: unmapped
+    platform: unknown
+  - name: getDefaultDisassembler
+    status: unmapped
+    platform: unknown
+  - name: getDirectoryList
+    status: unmapped
+    platform: unknown
+  - name: getDissectCode
+    status: unmapped
+    platform: unknown
+  - name: getDotNetDataCollector
+    status: unmapped
+    platform: unknown
+  - name: getFileList
+    status: unmapped
+    platform: unknown
+  - name: getFileVersion
+    status: unmapped
+    platform: unknown
+  - name: getForegroundProcess
+    status: unmapped
+    platform: unknown
+  - name: getForegroundWindow
+    status: unmapped
+    platform: unknown
+  - name: getForm
+    status: unmapped
+    platform: unknown
+  - name: getFormCount
+    status: unmapped
+    platform: unknown
+  - name: getFreezeTimer
+    status: unmapped
+    platform: unknown
+  - name: getFunctionRange
+    status: unmapped
+    platform: unknown
+  - name: getGlobalVariable
+    status: unmapped
+    platform: unknown
+  - name: getHandleList
+    status: unmapped
+    platform: unknown
+  - name: getHeader
+    status: unmapped
+    platform: unknown
+  - name: getHotkeyHandlerThread
+    status: unmapped
+    platform: unknown
+  - name: getInstructionSize
+    status: unmapped
+    platform: unknown
+  - name: getLuaEngine
+    status: unmapped
+    platform: unknown
+  - name: getMainForm
+    status: unmapped
+    platform: unknown
+  - name: getMemoryProtection
+    status: unmapped
+    platform: unknown
+  - name: getMemoryRegionInfo
+    status: unmapped
+    platform: unknown
+  - name: getMemoryViewForm
+    status: unmapped
+    platform: unknown
+  - name: getMethodParameters
+    status: unmapped
+    platform: unknown
+  - name: getMethodProperty
+    status: unmapped
+    platform: unknown
+  - name: getModulePreference
+    status: unmapped
+    platform: unknown
+  - name: getModuleSize
+    status: unmapped
+    platform: unknown
+  - name: getNameFromAddress
+    status: unmapped
+    platform: unknown
+  - name: getNextAllocNumber
+    status: unmapped
+    platform: unknown
+  - name: getOpenedFileSize
+    status: unmapped
+    platform: unknown
+  - name: getOpenedProcessHandle
+    status: unmapped
+    platform: unknown
+  - name: getOpenedProcessID
+    status: unmapped
+    platform: unknown
+  - name: getOperatingSystem
+    status: unmapped
+    platform: unknown
+  - name: getPhysicalAddressCR3
+    status: unmapped
+    platform: unknown
+  - name: getPixel
+    status: unmapped
+    platform: unknown
+  - name: getPointerSize
+    status: unmapped
+    platform: unknown
+  - name: getPreviousOpcode
+    status: unmapped
+    platform: unknown
+  - name: getProcessAge
+    status: unmapped
+    platform: unknown
+  - name: getProcessIDFromProcessName
+    status: unmapped
+    platform: unknown
+  - name: getProcesslist
+    status: unmapped
+    platform: unknown
+  - name: getProperty
+    status: unmapped
+    platform: unknown
+  - name: getPropertyList
+    status: unmapped
+    platform: unknown
+  - name: getRef
+    status: unmapped
+    platform: unknown
+  - name: getRTTIClassName
+    status: unmapped
+    platform: unknown
+  - name: getScreenCanvas
+    status: unmapped
+    platform: unknown
+  - name: getScreenDPI
+    status: unmapped
+    platform: unknown
+  - name: getScreenHeight
+    status: unmapped
+    platform: unknown
+  - name: getScreenWidth
+    status: unmapped
+    platform: unknown
+  - name: getSelectedStructElement
+    status: unmapped
+    platform: unknown
+  - name: getSettingsForm
+    status: unmapped
+    platform: unknown
+  - name: getSettingsOption
+    status: unmapped
+    platform: unknown
+  - name: getStructure
+    status: unmapped
+    platform: unknown
+  - name: getStructureCount
+    status: unmapped
+    platform: unknown
+  - name: getStructureElementsFromName
+    status: unmapped
+    platform: unknown
+  - name: getSymbolInfo
+    status: unmapped
+    platform: unknown
+  - name: getSystemArchitecture
+    status: unmapped
+    platform: unknown
+  - name: getSystemMetrics
+    status: unmapped
+    platform: unknown
+  - name: getTableOption
+    status: unmapped
+    platform: unknown
+  - name: getTempFolder
+    status: unmapped
+    platform: unknown
+  - name: getThreadlist
+    status: unmapped
+    platform: unknown
+  - name: getTickCount
+    status: unmapped
+    platform: unknown
+  - name: getTimeStamp
+    status: unmapped
+    platform: unknown
+  - name: getTranslationFolder
+    status: unmapped
+    platform: unknown
+  - name: getTypeDefData
+    status: unmapped
+    platform: unknown
+  - name: getTypeDefMethods
+    status: unmapped
+    platform: unknown
+  - name: getTypeDefParent
+    status: unmapped
+    platform: unknown
+  - name: getUltimap2
+    status: unmapped
+    platform: unknown
+  - name: getUniqueAOB
+    status: unmapped
+    platform: unknown
+  - name: getUpdateTimer
+    status: unmapped
+    platform: unknown
+  - name: getUserRegistryEnvironmentVariable
+    status: unmapped
+    platform: unknown
+  - name: getVisibleDisassembler
+    status: unmapped
+    platform: unknown
+  - name: getWindow
+    status: unmapped
+    platform: unknown
+  - name: getWindowCaption
+    status: unmapped
+    platform: unknown
+  - name: getWindowClassName
+    status: unmapped
+    platform: unknown
+  - name: getWindowlist
+    status: unmapped
+    platform: unknown
+  - name: getWindowProcessID
+    status: unmapped
+    platform: unknown
+  - name: getWorkAreaHeight
+    status: unmapped
+    platform: unknown
+  - name: getWorkAreaWidth
+    status: unmapped
+    platform: unknown
+  - name: getWriteLog
+    status: unmapped
+    platform: unknown
+  - name: getXBox360ControllerState
+    status: unmapped
+    platform: unknown
+  - name: hideAllCEWindows
+    status: unmapped
+    platform: unknown
+  - name: hookWndProc
+    status: unmapped
+    platform: unknown
+  - name: HotkeyHandlerThread
+    status: unmapped
+    platform: unknown
+  - name: inheritsFromComponent
+    status: unmapped
+    platform: unknown
+  - name: inheritsFromControl
+    status: unmapped
+    platform: unknown
+  - name: inheritsFromObject
+    status: unmapped
+    platform: unknown
+  - name: inheritsFromWinControl
+    status: unmapped
+    platform: unknown
+  - name: injectDLL
+    status: unmapped
+    platform: unknown
+  - name: injectDotNetDLL
+    status: unmapped
+    platform: unknown
+  - name: injectLibrary
+    status: unmapped
+    platform: unknown
+  - name: inMainThread
+    status: unmapped
+    platform: unknown
+  - name: inModule
+    status: unmapped
+    platform: unknown
+  - name: inputQuery
+    status: unmapped
+    platform: unknown
+  - name: inSystemModule
+    status: unmapped
+    platform: unknown
+  - name: integerToUserData
+    status: unmapped
+    platform: unknown
+  - name: invertColor
+    status: unmapped
+    platform: unknown
+  - name: isAdmin
+    status: unmapped
+    platform: unknown
+  - name: isConnectedToCEServer
+    status: unmapped
+    platform: unknown
+  - name: isJumpDestination
+    status: unmapped
+    platform: unknown
+  - name: isKeyPressed
+    status: unmapped
+    platform: unknown
+  - name: isPaused
+    status: unmapped
+    platform: unknown
+  - name: keyDown
+    status: unmapped
+    platform: unknown
+  - name: keyUp
+    status: unmapped
+    platform: unknown
+  - name: loadFontFromStream
+    status: unmapped
+    platform: unknown
+  - name: loadLuaScriptsFromPath
+    status: unmapped
+    platform: unknown
+  - name: loadModule
+    status: unmapped
+    platform: unknown
+  - name: loadModuleLocal
+    status: unmapped
+    platform: unknown
+  - name: loadNewSymbols
+    status: unmapped
+    platform: unknown
+  - name: loadPlugin
+    status: unmapped
+    platform: unknown
+  - name: loadPOFile
+    status: unmapped
+    platform: unknown
+  - name: loadTable
+    status: unmapped
+    platform: unknown
+  - name: mapMemory
+    status: unmapped
+    platform: unknown
+  - name: mapViewOfSection
+    status: unmapped
+    platform: unknown
+  - name: md5file
+    status: unmapped
+    platform: unknown
+  - name: md5memory
+    status: unmapped
+    platform: unknown
+  - name: messageDialog
+    status: unmapped
+    platform: unknown
+  - name: mouse_event
+    status: unmapped
+    platform: unknown
+  - name: onAPIPointerChange
+    status: unmapped
+    platform: unknown
+  - name: onAutoGuess
+    status: unmapped
+    platform: unknown
+  - name: OnStatusbarUpdate
+    status: unmapped
+    platform: unknown
+  - name: openFileAsProcess
+    status: unmapped
+    platform: unknown
+  - name: openLuaServer
+    status: unmapped
+    platform: unknown
+  - name: openProcess
+    status: unmapped
+    platform: unknown
+  - name: outputDebugString
+    status: unmapped
+    platform: unknown
+  - name: pause
+    status: unmapped
+    platform: unknown
+  - name: playSound
+    status: unmapped
+    platform: unknown
+  - name: printf
+    status: unmapped
+    platform: unknown
+  - name: processMessages
+    status: unmapped
+    platform: unknown
+  - name: processMessagesPaintOnly
+    status: unmapped
+    platform: unknown
+  - name: queue
+    status: unmapped
+    platform: unknown
+  - name: qwordToByteTable
+    status: unmapped
+    platform: unknown
+  - name: readBytes
+    status: unmapped
+    platform: unknown
+  - name: readBytesLocal
+    status: unmapped
+    platform: unknown
+  - name: readDouble
+    status: unmapped
+    platform: unknown
+  - name: readDoubleLocal
+    status: unmapped
+    platform: unknown
+  - name: readFloat
+    status: unmapped
+    platform: unknown
+  - name: readFloatLocal
+    status: unmapped
+    platform: unknown
+  - name: readFromClipboard
+    status: unmapped
+    platform: unknown
+  - name: readInteger
+    status: unmapped
+    platform: unknown
+  - name: readIntegerLocal
+    status: unmapped
+    platform: unknown
+  - name: readPointer
+    status: unmapped
+    platform: unknown
+  - name: readPointerLocal
+    status: unmapped
+    platform: unknown
+  - name: readProcessMemoryCR3
+    status: unmapped
+    platform: unknown
+  - name: readQword
+    status: unmapped
+    platform: unknown
+  - name: readQwordLocal
+    status: unmapped
+    platform: unknown
+  - name: readRegionFromFile
+    status: unmapped
+    platform: unknown
+  - name: readShortInteger
+    status: unmapped
+    platform: unknown
+  - name: readSmallInteger
+    status: unmapped
+    platform: unknown
+  - name: readSmallIntegerLocal
+    status: unmapped
+    platform: unknown
+  - name: readString
+    status: unmapped
+    platform: unknown
+  - name: readStringLocal
+    status: unmapped
+    platform: unknown
+  - name: registerAddressLookupCallback
+    status: unmapped
+    platform: unknown
+  - name: registerAssembler
+    status: unmapped
+    platform: unknown
+  - name: registerAutoAssemblerCommand
+    status: unmapped
+    platform: unknown
+  - name: registerAutoAssemblerPrologue
+    status: unmapped
+    platform: unknown
+  - name: registerAutoAssemblerTemplate
+    status: unmapped
+    platform: unknown
+  - name: registerBinUtil
+    status: unmapped
+    platform: unknown
+  - name: registerEXETrainerFeature
+    status: unmapped
+    platform: unknown
+  - name: registerFormAddNotification
+    status: unmapped
+    platform: unknown
+  - name: registerGlobalDisassembleOverride
+    status: unmapped
+    platform: unknown
+  - name: registerGlobalStructureListUpdateNotification
+    status: unmapped
+    platform: unknown
+  - name: registerLuaFunctionHighlight
+    status: unmapped
+    platform: unknown
+  - name: registerModuleListCallback
+    status: unmapped
+    platform: unknown
+  - name: registerProcessListCallback
+    status: unmapped
+    platform: unknown
+  - name: registerSpeedhackCallbacks
+    status: unmapped
+    platform: unknown
+  - name: registerStructureAndElementListCallback
+    status: unmapped
+    platform: unknown
+  - name: registerStructureDissectOverride
+    status: unmapped
+    platform: unknown
+  - name: registerStructureDissectOverride2
+    status: unmapped
+    platform: unknown
+  - name: registerStructureNameLookup
+    status: unmapped
+    platform: unknown
+  - name: registerSymbol
+    status: unmapped
+    platform: unknown
+  - name: registerSymbolLookupCallback
+    status: unmapped
+    platform: unknown
+  - name: reinitializeDotNetSymbolhandler
+    status: unmapped
+    platform: unknown
+  - name: reinitializeSelfSymbolhandler
+    status: unmapped
+    platform: unknown
+  - name: reinitializeSymbolhandler
+    status: unmapped
+    platform: unknown
+  - name: removeCIncludePath
+    status: unmapped
+    platform: unknown
+  - name: requireAdmin
+    status: unmapped
+    platform: unknown
+  - name: resetLuaState
+    status: unmapped
+    platform: unknown
+  - name: runCommand
+    status: unmapped
+    platform: unknown
+  - name: saveOpenedFile
+    status: unmapped
+    platform: unknown
+  - name: saveTable
+    status: unmapped
+    platform: unknown
+  - name: searchPDBWhileLoading
+    status: unmapped
+    platform: unknown
+  - name: sendMessage
+    status: unmapped
+    platform: unknown
+  - name: setAPIPointer
+    status: unmapped
+    platform: unknown
+  - name: setAssemblerMode
+    status: unmapped
+    platform: unknown
+  - name: setComment
+    status: unmapped
+    platform: unknown
+  - name: setCustomTCCParameters
+    status: unmapped
+    platform: unknown
+  - name: setGlobalDelayBetweenHotkeyActivation
+    status: unmapped
+    platform: unknown
+  - name: setGlobalKeyPollInterval
+    status: unmapped
+    platform: unknown
+  - name: setGlobalVariable
+    status: unmapped
+    platform: unknown
+  - name: setHeader
+    status: unmapped
+    platform: unknown
+  - name: setMemoryProtection
+    status: unmapped
+    platform: unknown
+  - name: setMethodProperty
+    status: unmapped
+    platform: unknown
+  - name: setModulePreference
+    status: unmapped
+    platform: unknown
+  - name: setMousePos
+    status: unmapped
+    platform: unknown
+  - name: setPointerSize
+    status: unmapped
+    platform: unknown
+  - name: setProgressState
+    status: unmapped
+    platform: unknown
+  - name: setProgressValue
+    status: unmapped
+    platform: unknown
+  - name: setProperty
+    status: unmapped
+    platform: unknown
+  - name: setSettingsOption
+    status: unmapped
+    platform: unknown
+  - name: setSpecialScanOptionsOverride
+    status: unmapped
+    platform: unknown
+  - name: setSQLiteLibraryName
+    status: unmapped
+    platform: unknown
+  - name: setTableOption
+    status: unmapped
+    platform: unknown
+  - name: setUserRegistryEnvironmentVariable
+    status: unmapped
+    platform: unknown
+  - name: setXBox360ControllerVibration
+    status: unmapped
+    platform: unknown
+  - name: shellExecute
+    status: unmapped
+    platform: unknown
+  - name: shortCutToText
+    status: unmapped
+    platform: unknown
+  - name: showMessage
+    status: unmapped
+    platform: unknown
+  - name: showSelectionList
+    status: unmapped
+    platform: unknown
+  - name: signExtend
+    status: unmapped
+    platform: unknown
+  - name: signTable
+    status: unmapped
+    platform: unknown
+  - name: sleep
+    status: unmapped
+    platform: unknown
+  - name: speak
+    status: unmapped
+    platform: unknown
+  - name: speakEnglish
+    status: unmapped
+    platform: unknown
+  - name: speedhack_getSpeed
+    status: unmapped
+    platform: unknown
+  - name: speedhack_setSpeed
+    status: unmapped
+    platform: unknown
+  - name: split
+    status: unmapped
+    platform: unknown
+  - name: splitDisassembledString
+    status: unmapped
+    platform: unknown
+  - name: startsWith
+    status: unmapped
+    platform: unknown
+  - name: stringToByteTable
+    status: unmapped
+    platform: unknown
+  - name: stringToMD5String
+    status: unmapped
+    platform: unknown
+  - name: structChange
+    status: unmapped
+    platform: unknown
+  - name: supportCheatEngine
+    status: unmapped
+    platform: unknown
+  - name: symbolHandlerAddModule
+    status: unmapped
+    platform: unknown
+  - name: symbolsDoneLoading
+    status: unmapped
+    platform: unknown
+  - name: synchronize
+    status: unmapped
+    platform: unknown
+  - name: targetIs64Bit
+    status: unmapped
+    platform: unknown
+  - name: targetIsAndroid
+    status: unmapped
+    platform: unknown
+  - name: targetIsArm
+    status: unmapped
+    platform: unknown
+  - name: targetIsRosetta
+    status: unmapped
+    platform: unknown
+  - name: targetIsX86
+    status: unmapped
+    platform: unknown
+  - name: textToShortCut
+    status: unmapped
+    platform: unknown
+  - name: translate
+    status: unmapped
+    platform: unknown
+  - name: translateID
+    status: unmapped
+    platform: unknown
+  - name: unhideMainCEwindow
+    status: unmapped
+    platform: unknown
+  - name: unhookWndProc
+    status: unmapped
+    platform: unknown
+  - name: unloadLoadedFont
+    status: unmapped
+    platform: unknown
+  - name: unmapMemory
+    status: unmapped
+    platform: unknown
+  - name: unMapViewOfSection
+    status: unmapped
+    platform: unknown
+  - name: unpause
+    status: unmapped
+    platform: unknown
+  - name: unregisterAddressLookupCallback
+    status: unmapped
+    platform: unknown
+  - name: unregisterAssembler
+    status: unmapped
+    platform: unknown
+  - name: unregisterAutoAssemblerCommand
+    status: unmapped
+    platform: unknown
+  - name: unregisterAutoAssemblerPrologue
+    status: unmapped
+    platform: unknown
+  - name: unregisterAutoAssemblerTemplate
+    status: unmapped
+    platform: unknown
+  - name: unregisterEXETrainerFeature
+    status: unmapped
+    platform: unknown
+  - name: unregisterFormAddNotification
+    status: unmapped
+    platform: unknown
+  - name: unregisterGlobalDisassembleOverride
+    status: unmapped
+    platform: unknown
+  - name: unregisterGlobalStructureListUpdateNotification
+    status: unmapped
+    platform: unknown
+  - name: unregisterLuaFunctionHighlight
+    status: unmapped
+    platform: unknown
+  - name: unregisterSpeedhackCallbacks
+    status: unmapped
+    platform: unknown
+  - name: unregisterStructureAndElementListCallback
+    status: unmapped
+    platform: unknown
+  - name: unregisterStructureDissectOverride
+    status: unmapped
+    platform: unknown
+  - name: unregisterStructureDissectOverride2
+    status: unmapped
+    platform: unknown
+  - name: unregisterStructureNameLookup
+    status: unmapped
+    platform: unknown
+  - name: unregisterSymbol
+    status: unmapped
+    platform: unknown
+  - name: unregisterSymbolLookupCallback
+    status: unmapped
+    platform: unknown
+  - name: userDataToInteger
+    status: unmapped
+    platform: unknown
+  - name: UTF8ToAnsi
+    status: unmapped
+    platform: unknown
+  - name: waitForDotNet
+    status: unmapped
+    platform: unknown
+  - name: waitForExports
+    status: unmapped
+    platform: unknown
+  - name: waitForPDB
+    status: unmapped
+    platform: unknown
+  - name: waitForSections
+    status: unmapped
+    platform: unknown
+  - name: waitforsymbols
+    status: unmapped
+    platform: unknown
+  - name: wideStringToByteTable
+    status: unmapped
+    platform: unknown
+  - name: wordToByteTable
+    status: unmapped
+    platform: unknown
+  - name: writeBytes
+    status: unmapped
+    platform: unknown
+  - name: writeBytesLocal
+    status: unmapped
+    platform: unknown
+  - name: writeDouble
+    status: unmapped
+    platform: unknown
+  - name: writeDoubleLocal
+    status: unmapped
+    platform: unknown
+  - name: writeFloat
+    status: unmapped
+    platform: unknown
+  - name: writeFloatLocal
+    status: unmapped
+    platform: unknown
+  - name: writeInteger
+    status: unmapped
+    platform: unknown
+  - name: writeIntegerLocal
+    status: unmapped
+    platform: unknown
+  - name: writePointer
+    status: unmapped
+    platform: unknown
+  - name: writePointerLocal
+    status: unmapped
+    platform: unknown
+  - name: writeProcessMemoryCR3
+    status: unmapped
+    platform: unknown
+  - name: writeQword
+    status: unmapped
+    platform: unknown
+  - name: writeQwordLocal
+    status: unmapped
+    platform: unknown
+  - name: writeRegionToFile
+    status: unmapped
+    platform: unknown
+  - name: writeShortInteger
+    status: unmapped
+    platform: unknown
+  - name: writeSmallInteger
+    status: unmapped
+    platform: unknown
+  - name: writeSmallIntegerLocal
+    status: unmapped
+    platform: unknown
+  - name: writeString
+    status: unmapped
+    platform: unknown
+  - name: writeStringLocal
+    status: unmapped
+    platform: unknown
+  - name: writeToClipboard
+    status: unmapped
+    platform: unknown

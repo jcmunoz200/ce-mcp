@@ -1,0 +1,96 @@
+group: table
+description: "Address-list and Cheat Table operations."
+
+tools:
+  - name: table_new
+    summary: "Create an empty table context."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getAddressList() + remove existing records"
+    risk: write
+    status: mapped
+    notes: "Verify the exact record-deletion method on macOS."
+
+  - name: table_load
+    summary: "Load a .CT or .CETRAINER file into a table context."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "loadTable(filename, merge)"
+    risk: execute
+    status: mapped
+    notes: "A table can contain Auto Assembler and Lua scripts; loading is execution-adjacent."
+
+  - name: table_save
+    summary: "Save a table context to a .CT file."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "saveTable(filename, protect)"
+    risk: write
+    status: mapped
+
+  - name: table_entries
+    summary: "Return a paginated list of address-list entries."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getAddressList():getCount() / getMemoryRecord(i)"
+    risk: read
+    status: mapped
+
+  - name: table_add
+    summary: "Add a memory record with address, type and description."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "getAddressList():createMemoryRecord()"
+    risk: write
+    status: mapped
+
+  - name: table_update
+    summary: "Update an entry's description, address, type or script."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord properties"
+    risk: write
+    status: mapped
+
+  - name: table_delete
+    summary: "Delete an address-list entry."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord:delete()"
+    risk: write
+    status: mapped
+    notes: "Verify delete semantics and child records."
+
+  - name: table_freeze
+    summary: "Freeze or unfreeze an address-list entry."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord.Active = true/false"
+    risk: write
+    status: mapped
+
+  - name: table_set_value
+    summary: "Set an address-list entry's value."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord.Value"
+    risk: write
+    status: mapped
+
+  - name: table_run_script
+    summary: "Activate an entry's Auto Assembler or Lua script."
+    profiles: [core, full]
+    platforms: [macos, windows, linux]
+    backend: lua
+    ce_lua: "MemoryRecord.Active + autoAssemble"
+    risk: execute
+    status: mapped

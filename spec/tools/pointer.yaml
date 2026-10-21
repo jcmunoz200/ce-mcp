@@ -1,0 +1,63 @@
+group: pointer
+description: "Pointer maps and pointer scans."
+
+tools:
+  - name: pointer_scan_start
+    summary: "Start a pointer scan and return a task ID."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "No direct pointer-scan API in celua.txt; form-driven or native work is required."
+
+  - name: pointer_scan_status
+    summary: "Return pointer-scan progress, result count and state."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "Depends on the pointer-scan implementation."
+
+  - name: pointer_scan_results
+    summary: "Return a paginated list of pointer paths."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "Depends on the pointer-scan implementation and a stable result format."
+
+  - name: pointer_scan_rescan
+    summary: "Rescan pointer paths against a new target address."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "Depends on the pointer-scan implementation and a rescan model."
+
+  - name: pointer_scan_cancel
+    summary: "Cancel a running pointer scan."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "Depends on the pointer-scan implementation and cooperative cancellation."
+
+  - name: pointermap_generate
+    summary: "Generate a pointer map for later scans."
+    profiles: [full]
+    platforms: [macos, windows, linux]
+    backend: native
+    ce_lua: null
+    risk: read
+    status: gap
+    notes: "Pointer-map generation callbacks exist, but orchestration is form-driven."

@@ -1,0 +1,36 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build outputs
+target/
+docs/book/
+dist/
+*.dmg
+*.pkg
+*.app
+
+# Runtime state
+.ce-mcp/
+bridge.json
+*.log
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
+
+# Cheat Engine artifacts and local evidence
+*.CT
+*.CETRAINER
+*.ct
+*.cetrainer
+evidence/raw/
+artifacts/

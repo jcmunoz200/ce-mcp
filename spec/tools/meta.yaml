@@ -1,0 +1,41 @@
+group: meta
+description: "Server state, discovery and handle management."
+
+tools:
+  - name: ce_info
+    summary: "Return server, build, Cheat Engine version and platform information."
+    profiles: [core, full, lua, all]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: meta
+    status: mapped
+    notes: "Cheat Engine version via getCheatEngineFileVersion() when the bridge is connected."
+
+  - name: ce_status
+    summary: "Return bridge state, active profile, open handles and a capability summary."
+    profiles: [core, full, lua, all]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: meta
+    status: mapped
+
+  - name: ce_capabilities
+    summary: "Return the machine-readable feature and coverage matrix for the active backend."
+    profiles: [core, full, lua, all]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: meta
+    status: mapped
+    notes: "Generated from spec/ and the backend capability table."
+
+  - name: ce_handles
+    summary: "List, inspect and close process, scan, debugger and table handles."
+    profiles: [core, full, lua, all]
+    platforms: [macos, windows, linux]
+    backend: server
+    ce_lua: null
+    risk: meta
+    status: mapped
