@@ -1,6 +1,6 @@
-# ce-mcp
+# Introduction
 
-**Unofficial MCP server for Cheat Engine — design preview.**
+**ce-mcp — Unofficial MCP server for Cheat Engine — design preview.**
 
 This book is the design and migration documentation for `ce-mcp`. The project
 does not have an implementation yet.

@@ -6,6 +6,8 @@
 ![MCP 2026-07-28](https://img.shields.io/badge/MCP-2026--07--28-blue)
 ![License: TBD](https://img.shields.io/badge/license-TBD-lightgrey)
 
+**Documentation site:** <https://jcmunoz200.github.io/ce-mcp/>
+
 > **Status:** this repository currently contains design and migration
 > documentation only. There is no implementation yet.
 >
