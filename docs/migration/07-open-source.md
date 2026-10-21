@@ -107,9 +107,12 @@ Documentation releases do not imply an implementation license.
 - [x] Security policy and code of conduct.
 - [x] Governance and maintainer list.
 - [x] Documentation CI.
-- [ ] Review all external links.
-- [ ] Confirm no Cheat Engine assets or copied prose.
-- [ ] Publish the repository under the `ce-mcp` name.
-- [ ] Enable GitHub Pages.
-- [ ] Enable private security reporting.
-- [ ] Add repository topics and description.
+- [x] Review all external links with lychee.
+- [x] Confirm no Cheat Engine assets or copied prose.
+- [x] Publish the repository under the `ce-mcp` name.
+- [x] Enable GitHub Pages.
+- [x] Enable private security reporting.
+- [x] Add repository topics and description.
+
+The repository is at <https://github.com/jcmunoz200/ce-mcp> and the rendered
+documentation is at <https://jcmunoz200.github.io/ce-mcp/>.
