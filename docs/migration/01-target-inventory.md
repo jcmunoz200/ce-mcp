@@ -146,7 +146,10 @@ nm -arch arm64 "$TARGET/Contents/MacOS/cheatengine" | wc -l
 nm -arch arm64 "$TARGET/Contents/MacOS/cheatengine" | grep -c '\$\$_'
 strings -a -n 5 "$TARGET/Contents/MacOS/cheatengine" | grep -E '^Tfrm' | sort -u | wc -l
 strings -a -n 4 "$TARGET/Contents/MacOS/cheatengine" | grep -c 'TPF0'
-grep -oE '^[A-Za-z_][A-Za-z0-9_]*\(' "$TARGET/Contents/Lua/celua.txt" | sort -u | wc -l
+grep -oE '^[A-Za-z_][A-Za-z0-9_]*\(' "$TARGET/Contents/Lua/celua.txt" \
+  | sed 's/($//' | grep -v '^ModuleLoader$' | sort -u | wc -l
+grep -E '^[A-Za-z_][A-Za-z0-9_]*\(' "$TARGET/Contents/Lua/celua.txt" \
+  | grep -v '^ModuleLoader(' | wc -l
 ```
 
 ## Unknowns

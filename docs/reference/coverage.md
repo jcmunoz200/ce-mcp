@@ -80,7 +80,7 @@ curated catalog and the generated tools.
 
 | Platform | Curated design | Bridge | Native gaps |
 | --- | --- | --- | --- |
-| macOS arm64 | Yes | Planned; first target | Pointer scan, arm64 debugger context, structure dissect |
+| macOS arm64 | Yes | Planned; first target | Pointer scan, arm64 debugger context, interactive structure dissect |
 | macOS x86_64 | Yes | Planned | Same, plus x86-specific debugger behavior |
 | Windows | Yes | Future | DBVM/kernel features excluded |
 | Linux | Yes | Future | Bridge needs validation |
@@ -107,7 +107,7 @@ A function is only "covered" when:
 ## How to update this page
 
 - Do not edit the counts by hand once the coverage generator exists.
-- Until then, update the table when a tool moves from `designed` to `mapped`,
+- Until then, update the table when a tool moves from `gap` to `mapped`,
   `implemented` or `tested`.
 - Keep the gaps list current.
 - Add a journal entry when a gap is closed or a new one is found.

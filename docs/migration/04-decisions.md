@@ -45,4 +45,3 @@ superseded ADR stays in the repository.
   Cheat Engine forms.
 - Whether the first public implementation release supports MCP `2025-11-25`
   clients.
-- The final repository URL and documentation hosting.

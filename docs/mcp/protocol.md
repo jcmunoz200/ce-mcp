@@ -92,8 +92,8 @@ standard version error, rather than guessing.
 `cacheScope`.
 
 - `ttlMs`: 3,600,000 for a stable build; lower during development.
-- `cacheScope`: `public` for a released binary; `private` when the tool list
-  depends on local configuration such as the active profile.
+- `cacheScope`: `private` for `tools/list`, because the list depends on the
+  active profile. A future build with a fixed profile may use `public`.
 
 The active profile is part of the server configuration, not of each request, so
 the list is stable for the lifetime of a server process.
@@ -112,11 +112,11 @@ important: they let clients validate results and generate better summaries.
 
 ### Naming
 
-- Lowercase `snake_case`.
-- `domain_action` for curated tools: `process_open`, `memory_read`,
-  `scan_start`.
-- Generated Lua tools use the `lua_` prefix plus the original function name:
-  `lua_readInteger`.
+- Curated tools use lowercase `snake_case` and `domain_action`:
+  `process_open`, `memory_read`, `scan_start`.
+- Generated Lua tools use the `lua_` prefix plus the original function name,
+  preserving its case: `lua_readInteger`. This is the documented exception; it
+  keeps generated names aligned one-to-one with `celua.txt`.
 - No tool name contains a version number.
 - Names are stable within a major version.
 

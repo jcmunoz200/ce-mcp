@@ -64,7 +64,8 @@ The bridge can cover most of the documented API:
 - `.CT` load/save;
 - AOB scan, symbols, address parsing;
 - disassembly, assembly, Auto Assembler;
-- debugger attach, breakpoints, stepping, registers, stack;
+- debugger breakpoints and context where the Lua API supports them; attach,
+  stepping and stack traces are known gaps;
 - structures and Lua evaluation;
 - hotkeys, speedhack and some UI operations.
 

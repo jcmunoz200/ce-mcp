@@ -5,7 +5,7 @@
 Every documented Cheat Engine capability must be accounted for. "All tools"
 does not mean one MCP tool per dialog. It means:
 
-1. a curated native tool for the operation, or
+1. a curated MCP tool for the operation, or
 2. a generated tool for the documented Lua function, or
 3. an explicit exclusion with a reason and a platform note.
 
@@ -104,14 +104,14 @@ backend strategy is marked `mapped`; a tool without one is marked `gap`.
 
 The `platforms` field in each tool definition is authoritative.
 
-## Known gaps
+## Known limitations and gaps
 
-| Gap | Reason | Candidate solution |
+| Limitation or gap | Reason | Candidate solution |
 | --- | --- | --- |
 | Pointer scan | No direct Lua API found in `celua.txt`; the UI forms orchestrate it | Native backend or controlled form automation |
-| Structure dissect | Lua exposes structures, but the full dissect workflow is form-driven | Native backend or a composite Lua tool |
+| Structure dissect UI | The `structure_*` tools cover definitions and reads; the interactive window is form-driven | Use `structure_*`; UI parity is out of scope |
 | arm64 debugger context | The binary contains explicit aarch64 context error paths | Native Mach exception backend |
-| Code cave scanner | Mostly form-driven | Lua composition plus native helpers |
+| Code cave scanner | No single documented API; `code_cave_find` composes region and byte scans | Planned composed tool |
 | Trainer generation | Windows/PE-centric | Out of scope for macOS; revisit later |
 | DBVM and kernel features | Windows-only by design | Excluded |
 
