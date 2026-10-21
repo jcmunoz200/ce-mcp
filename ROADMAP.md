@@ -5,15 +5,18 @@ no implementation yet.
 
 ## D0 — Public design preview
 
-Status: in progress.
+Status: complete for the documentation scope. The public preview is at
+<https://jcmunoz200.github.io/ce-mcp/>. Implementation starts in F0 after the
+license is chosen.
 
 - [x] Initial target inventory of Cheat Engine 7.7.
 - [x] Research the MCP `2026-07-28` specification.
 - [x] Decide MCP-first scope and Lua-bridge backend.
 - [x] Define the tool catalog and profiles.
-- [ ] Publish the documentation site.
-- [ ] Review every claim and link.
-- [ ] Close the open design questions in the migration journal.
+- [x] Publish the documentation site.
+- [x] Review every claim and link with markdownlint, lychee and mdBook.
+- [ ] Close the open design questions in the migration journal; these are
+  tracked for F0 and F3.
 
 Exit criteria:
 

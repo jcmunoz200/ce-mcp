@@ -20,6 +20,8 @@ The project does not have a released version yet.
 - Open-source readiness documentation, security policy, governance and
   contribution policy.
 - mdBook documentation site and documentation CI.
+- Published the public documentation site at
+  <https://jcmunoz200.github.io/ce-mcp/>.
 
 ### Changed
 
