@@ -56,7 +56,7 @@ The server targets MCP `2026-07-28`:
 - **Stateless requests.** No `initialize` handshake and no session header.
   Every request carries protocol version and client capabilities in `_meta`.
 - **`server/discover`.** Advertises supported protocol versions, capabilities
-  and tool profiles.
+  and instructions, including the active profile.
 - **Explicit handles.** Stateful operations return opaque handles:
   `process_handle`, `scan_handle`, `debug_handle`, `table_handle`.
 - **Tasks.** Long operations such as pointer scans can return a task handle
@@ -65,8 +65,9 @@ The server targets MCP `2026-07-28`:
   unbounded array.
 - **Caching.** List results carry `ttlMs` and `cacheScope` so clients can cache
   tool and resource lists.
-- **Subscriptions.** `subscriptions/listen` carries opt-in change
-  notifications for clients that want them.
+- **Subscriptions.** `subscriptions/listen` can deliver tool and resource list
+  changes. Runtime events such as scan progress and breakpoint hits use task
+  state or polling, not core subscription filters.
 
 The transport is stdio by default. Streamable HTTP is optional and binds to
 localhost. See [Transports](mcp/transports.md).

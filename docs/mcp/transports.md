@@ -65,6 +65,28 @@ Properties:
   for correctness;
 - no session ID; state is in the backend handles.
 
+### Required HTTP headers
+
+Every POST carries the protocol metadata twice: in `_meta` and in mirrored HTTP
+headers. The server must validate that they agree.
+
+| Header | Required for | Rule |
+| --- | --- | --- |
+| `MCP-Protocol-Version` | Every POST | Must match `io.modelcontextprotocol/protocolVersion` |
+| `Mcp-Method` | Every request | Must match the JSON-RPC `method` |
+| `Mcp-Name` | `tools/call`, `resources/read`, `prompts/get` | Must match `params.name` or `params.uri` |
+| `Accept` | Every POST | Must list `application/json` and `text/event-stream` |
+
+A missing or mismatched header is rejected with HTTP `400 Bad Request` and
+`HeaderMismatch` (`-32020`), not with a tool error. `Mcp-Name` values that are
+not header-safe use the specification's Base64 sentinel encoding. The F0 tests
+must cover a non-ASCII name and verify that the selected SDK emits it correctly.
+
+The server does not rely on `notifications/cancelled` over Streamable HTTP.
+Closing the request-scoped SSE stream is the cancellation signal. Older
+sessions, `Last-Event-ID` resumption and GET streams are not part of this
+revision.
+
 ### Security defaults
 
 - Listen address: `127.0.0.1` only.
@@ -123,7 +145,8 @@ stateless flow. If it does not, the client may fall back to the `initialize`
 handshake.
 
 `ce-mcp` will advertise both `2026-07-28` and `2025-11-25` during the
-compatibility period. The F0 spike must test both paths with real clients.
+compatibility period. F0 must test both protocol versions over stdio; HTTP
+compatibility is part of F1.
 
 ## References
 

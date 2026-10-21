@@ -41,7 +41,10 @@ The project does not have a released version yet.
 
 ### Fixed
 
-- Nothing yet.
+- Corrected the MCP `2026-07-28` notes: `clientInfo` is a should, Streamable
+  HTTP mirrors metadata in required headers, `cacheScope` describes cache
+  sharing rather than profile configuration, and core subscriptions do not
+  carry Cheat Engine runtime events.
 
 ### Security
 

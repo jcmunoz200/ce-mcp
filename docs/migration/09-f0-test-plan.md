@@ -47,6 +47,16 @@ third-party game or a process whose state matters.
 - Restart Cheat Engine and confirm the bridge can be loaded again without a
   stale port or token.
 
+### Protocol version compatibility
+
+- Modern stdio: call `server/discover`, then `tools/list`, then one read.
+- Legacy stdio: perform the `2025-11-25` `initialize` handshake, then
+  `tools/list` and one read. Record whether the same tool schemas are returned.
+- Send an unsupported version and verify `-32022` with the supported version
+  list, not a silent downgrade.
+- If the SDK does not expose a working legacy path on stdio, record it and
+  narrow the compatibility claim instead of advertising an untested path.
+
 ### Network boundary
 
 - Confirm the listener is bound to `127.0.0.1`, not `0.0.0.0` or `::`.
@@ -147,6 +157,7 @@ For every run, record:
 F0 is complete only when:
 
 - all six tools satisfy the table above on macOS arm64;
+- the modern and legacy stdio version paths behave as documented;
 - the bridge survives malformed input, reconnects and restart;
 - the localhost-only and token checks pass;
 - the handle lifecycle and error mappings are demonstrated;

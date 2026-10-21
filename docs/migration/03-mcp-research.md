@@ -9,8 +9,8 @@ Key changes from `2025-11-25`:
 
 - **Stateless protocol.** The `initialize` handshake, `notifications/initialized`
   and `Mcp-Session-Id` are removed.
-- **Per-request metadata.** Protocol version, client capabilities and client
-  info travel in `_meta` on every request.
+- **Per-request metadata.** Protocol version and client capabilities travel in
+  `_meta` on every request; clients should also identify themselves there.
 - **`server/discover`.** Servers advertise supported versions, capabilities and
   identity. Clients may use it for version selection or as a compatibility
   probe.
@@ -122,9 +122,9 @@ OpenTelemetry in server mode.
 
 ## Open questions
 
-- Whether the first release should also support `2025-11-25` clients that still
-  use the initialization handshake. `rmcp` provides compatibility; the bridge
-  spike will measure it.
+- How much of the `2025-11-25` compatibility path F0 must prove. The current
+  target is the stdio path; HTTP compatibility can wait for F1. `rmcp` provides
+  the mechanism, but the bridge spike must test it with a real legacy client.
 - Whether the embedded desktop mode needs HTTP at all in F1, or whether stdio
   is sufficient until multi-client is required.
 - How to expose progress without forcing SSE for every client.

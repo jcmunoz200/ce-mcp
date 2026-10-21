@@ -5,11 +5,16 @@
 `ce-mcp` targets **MCP `2026-07-28`**.
 
 The protocol is stateless. There is no `initialize` handshake, no
-`notifications/initialized` and no `Mcp-Session-Id`. Every request carries the
-protocol version, client information and client capabilities in `_meta`.
+`notifications/initialized` and no `Mcp-Session-Id`. Every request carries its
+protocol version and client capabilities in `_meta`; clients should also include
+their identity. There is no connection-scoped negotiation.
 
 The planned server uses `rmcp` 3.6 and can also answer `2025-11-25` clients
 through its compatibility path.
+
+This page was checked against the official `2026-07-28` versioning, discovery,
+tools, caching, pagination and subscriptions pages on 2026-10-21. See the
+[references](#references) at the end.
 
 ## Discovery
 
@@ -46,8 +51,7 @@ Illustrative response:
     "resultType": "complete",
     "supportedVersions": ["2026-07-28", "2025-11-25"],
     "capabilities": {
-      "tools": {},
-      "resources": {}
+      "tools": {}
     },
     "_meta": {
       "io.modelcontextprotocol/serverInfo": {
@@ -75,14 +79,19 @@ official schema. The field names come from the `2026-07-28` specification.
 
 Every request carries:
 
-| Key | Purpose |
-| --- | --- |
-| `io.modelcontextprotocol/protocolVersion` | Selected protocol revision |
-| `io.modelcontextprotocol/clientInfo` | Client name and version |
-| `io.modelcontextprotocol/clientCapabilities` | Extensions and features the client supports |
+| Key | Required | Purpose |
+| --- | --- | --- |
+| `io.modelcontextprotocol/protocolVersion` | Yes | Selected protocol revision |
+| `io.modelcontextprotocol/clientInfo` | Optional (SHOULD) | Client name and version |
+| `io.modelcontextprotocol/clientCapabilities` | Yes | Extensions and features the client supports |
 
-The server must reject a request whose version it does not support with the
-standard version error, rather than guessing.
+A request missing a required field is malformed and is rejected with
+`-32602` (invalid params); on HTTP the status is `400 Bad Request`. The server must reject a request whose version it
+does not support with `UnsupportedProtocolVersionError` (`-32022`) and list the
+versions it supports, rather than guessing or silently downgrading. On
+Streamable HTTP, the version is mirrored in `MCP-Protocol-Version`; a mismatch
+is an HTTP `400` with `HeaderMismatch` (`-32020`), not a tool error. See
+[Transports](transports.md#required-http-headers).
 
 ## Tools
 
@@ -92,8 +101,10 @@ standard version error, rather than guessing.
 `cacheScope`.
 
 - `ttlMs`: 3,600,000 for a stable build; lower during development.
-- `cacheScope`: `private` for `tools/list`, because the list depends on the
-  active profile. A future build with a fixed profile may use `public`.
+- `cacheScope`: `private` is the conservative default for this local server.
+  `cacheScope` describes who may share a cached response, not how the profile
+  is configured. Use `public` only when the deployment guarantees an identical
+  tool set for every caller and the response contains no per-caller data.
 
 The active profile is part of the server configuration, not of each request, so
 the list is stable for the lifetime of a server process.
@@ -177,7 +188,9 @@ reusing it with different arguments returns `CE_INVALID_CURSOR`.
 
 ## Resources
 
-Resources are optional in the first release. Planned read-only resources:
+Resources are optional in the first release. A build that does not implement
+them must not advertise a `resources` capability in `server/discover`. Planned
+read-only resources:
 
 | URI | Content |
 | --- | --- |
@@ -191,13 +204,19 @@ Resources are read-only snapshots, not a replacement for tools. They carry
 
 ## Subscriptions
 
-Clients may use `subscriptions/listen` to opt in to change notifications:
+Core `subscriptions/listen` supports these filters:
 
-- process exited;
-- scan progress or completion;
-- breakpoint hit;
-- debugger state changed;
-- table modified.
+- `toolsListChanged`;
+- `promptsListChanged`;
+- `resourcesListChanged`;
+- `resourceSubscriptions` for specific resource URIs.
+
+Those filters cover list changes and resource updates, not Cheat Engine
+runtime events. Process exit, scan progress, breakpoint hits, debugger state
+and table changes are **not** core subscription filters. F0 uses polling
+(`ce_status`, `scan_status`, `debug_status`) and task state for those events. A
+future vendor extension may define an application-specific filter, but it must
+not be presented as core MCP behavior.
 
 Subscriptions are optional. A client that does not subscribe can poll
 `scan_status`, `debug_status` or `ce_status` instead. The server must not require
@@ -268,7 +287,13 @@ sequenceDiagram
 ## References
 
 - [MCP `2026-07-28`](https://modelcontextprotocol.io/specification/2026-07-28)
+- [Versioning and compatibility](https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning)
 - [Discovery](https://modelcontextprotocol.io/specification/2026-07-28/server/discover)
+- [Tools](https://modelcontextprotocol.io/specification/2026-07-28/server/tools)
 - [Caching](https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/caching)
+- [Pagination](https://modelcontextprotocol.io/specification/2026-07-28/server/utilities/pagination)
+- [Subscriptions](https://modelcontextprotocol.io/specification/2026-07-28/basic/patterns/subscriptions)
+- [stdio transport](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/stdio)
+- [Streamable HTTP transport](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http)
 - [Transports](transports.md)
 - [Tasks extension](https://modelcontextprotocol.io/extensions/tasks/overview)
